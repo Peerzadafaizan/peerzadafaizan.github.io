@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-aO08sqzc7j/+VvPTo5Nn6sp0kO46BBDTQxvNh5h2fz4='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-PYsvwbO03QejmFFWbMFYALawHTwkH5B8xTI/dh/U6W8=' 'sha256-kEyKsheUKhGsse/FDKF2PLmoZLL+KoJbR/d3Tn7felQ='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-OH2IzKifbrscdZxaX+Eou7TREes7dTMtzYISatBk6AU='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-PYsvwbO03QejmFFWbMFYALawHTwkH5B8xTI/dh/U6W8=' 'sha256-kEyKsheUKhGsse/FDKF2PLmoZLL+KoJbR/d3Tn7felQ='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -210,7 +210,8 @@ h2.section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 700; le
 .hero-meta svg { width: 15px; height: 15px; color: var(--teal-500); flex-shrink: 0; }
 .hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 28px; position: relative; }
 .hero-card-header { display: flex; align-items: center; gap: 14px; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
-.hero-avatar { width: 56px; height: 56px; border-radius: 12px; background: linear-gradient(155deg, var(--navy-900), var(--teal-600)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 18px; flex-shrink: 0; }
+.hero-avatar { width: 56px; height: 56px; border-radius: 12px; background: linear-gradient(155deg, var(--navy-900), var(--teal-600)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 18px; flex-shrink: 0; overflow: hidden; }
+.hero-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero-card-header strong { display: block; font-size: 0.98rem; color: var(--ink-900); }
 .hero-card-header span { display: block; font-size: 0.82rem; color: var(--ink-500); margin-top: 2px; }
 .hero-stat-list { display: flex; flex-direction: column; gap: 14px; }
@@ -425,7 +426,7 @@ section:first-of-type { border-top: none; }
 
       <aside class="hero-card">
         <div class="hero-card-header">
-          <div class="hero-avatar">PFA</div>
+          <div class="hero-avatar"><img src="profile-photo.jpg" alt="Peerzada Faizan Ahmad" width="56" height="56" loading="eager" /></div>
           <div>
             <strong>Peerzada Faizan Ahmad</strong>
             <span>Accountant · Srinagar / Sopore, J&amp;K</span>
