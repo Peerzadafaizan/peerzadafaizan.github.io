@@ -490,6 +490,25 @@ section:first-of-type { border-top: none; }
     </div>
   </section>
 
+  <section id="snapshot">
+    <div class="container">
+      <div class="section-kicker">
+        <span class="eyebrow">Professional Snapshot</span>
+        <h2 class="section-title">At a glance</h2>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-badge"><span class="tool-icon">3+</span><span class="tool-name">Years Experience</span></div>
+        <div class="tool-badge"><span class="tool-icon">TP</span><span class="tool-name">Tally Prime</span></div>
+        <div class="tool-badge"><span class="tool-icon">GST</span><span class="tool-name">GST Compliance</span></div>
+        <div class="tool-badge"><span class="tool-icon">RC</span><span class="tool-name">Reconciliation</span></div>
+        <div class="tool-badge"><span class="tool-icon">EC</span><span class="tool-name">E-Commerce Accounting</span></div>
+        <div class="tool-badge"><span class="tool-icon">XL</span><span class="tool-name">Excel</span></div>
+        <div class="tool-badge"><span class="tool-icon">PY</span><span class="tool-name">Python</span></div>
+        <div class="tool-badge"><span class="tool-icon">IN/AE</span><span class="tool-name">India + UAE Opportunities</span></div>
+      </div>
+    </div>
+  </section>
+
   <section id="focus" class="section-alt">
     <div class="container">
       <div class="section-kicker">
@@ -536,6 +555,50 @@ section:first-of-type { border-top: none; }
       <div class="focus-ctas">
         <a href="#contact" class="btn btn-outline">Discuss an Opportunity</a>
         <a href="#contact" class="btn btn-ghost">Discuss Remote Accounting Support</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="container">
+      <div class="section-kicker">
+        <span class="eyebrow">What I Can Support</span>
+        <h2 class="section-title">Accounting &amp; bookkeeping support I can provide</h2>
+        <p class="section-sub">Capability areas grounded in the day-to-day work described above — for employers hiring an accountant, and for businesses needing remote accounting or bookkeeping support.</p>
+      </div>
+
+      <div class="focus-grid">
+        <div class="expertise-card">
+          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <h3>Bookkeeping &amp; Ledgers</h3>
+          <ul>
+            <li>Bookkeeping</li>
+            <li>Sales &amp; purchase accounting</li>
+            <li>Ledger reconciliation</li>
+            <li>Inventory accounting</li>
+          </ul>
+        </div>
+
+        <div class="expertise-card">
+          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+          <h3>GST &amp; Compliance</h3>
+          <ul>
+            <li>GST &amp; reconciliation</li>
+            <li>Bank reconciliation</li>
+            <li>AP / AR support</li>
+            <li>Import accounting</li>
+          </ul>
+        </div>
+
+        <div class="expertise-card">
+          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+          <h3>Reporting &amp; Systems</h3>
+          <ul>
+            <li>Tally Prime</li>
+            <li>Excel-based reporting</li>
+            <li>E-commerce / Amazon accounting</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -680,7 +743,7 @@ section:first-of-type { border-top: none; }
       <div class="projects-grid">
         <article class="project-card">
           <div class="project-head"><h3>GSTR-2A vs. Tally Purchase Reconciliation</h3><span class="project-index">01</span></div>
-          <div class="project-block"><span class="plabel">Problem</span><p>Supplier-reported GSTR-2A data frequently didn't line up cleanly with Tally purchase registers — some suppliers' invoices were recorded under internal prefix/suffix codes rather than their bare invoice numbers.</p></div>
+          <div class="project-block"><span class="plabel">Challenge</span><p>Supplier-reported GSTR-2A data frequently didn't line up cleanly with Tally purchase registers — some suppliers' invoices were recorded under internal prefix/suffix codes rather than their bare invoice numbers.</p></div>
           <div class="project-block"><span class="plabel">Process</span><p>Built a bidirectional match on GSTIN + Invoice Number as the strict key, then added a supplementary probable-match layer (GSTIN + amount, or digit-only comparison) to resolve the remaining unmatched pairs.</p></div>
           <div class="project-block"><span class="plabel">Tools</span><p>Excel, Python (openpyxl), GST portal exports, Tally purchase register exports.</p></div>
           <div class="project-block"><span class="plabel">Outcome</span><p>A structured, audit-ready workbook that separates cleanly matched invoices from probable matches and true exceptions, with conditional-formatting status flags.</p></div>
@@ -689,7 +752,7 @@ section:first-of-type { border-top: none; }
 
         <article class="project-card">
           <div class="project-head"><h3>Multi-State Amazon FBA / GSTR-8 TCS Reconciliation</h3><span class="project-index">02</span></div>
-          <div class="project-block"><span class="plabel">Problem</span><p>E-commerce sales spread across multiple state GSTINs needed TCS collected by Amazon reconciled against Tally sales records, state by state.</p></div>
+          <div class="project-block"><span class="plabel">Challenge</span><p>E-commerce sales spread across multiple state GSTINs needed TCS collected by Amazon reconciled against Tally sales records, state by state.</p></div>
           <div class="project-block"><span class="plabel">Process</span><p>Used GSTIN-to-state-code lookups to segment transactions, then reconciled GSTR-8 TCS figures against Tally sales ledgers with IGST/CGST/SGST columns separated for GSTR-1 Table 14 reporting.</p></div>
           <div class="project-block"><span class="plabel">Tools</span><p>Excel, Tally Prime exports, GST portal (GSTR-8) data.</p></div>
           <div class="project-block"><span class="plabel">Outcome</span><p>A repeatable state-wise reconciliation structure that keeps TCS reporting consistent across GSTINs.</p></div>
@@ -698,7 +761,7 @@ section:first-of-type { border-top: none; }
 
         <article class="project-card">
           <div class="project-head"><h3>Import &amp; Customs Duty Accounting</h3><span class="project-index">03</span></div>
-          <div class="project-block"><span class="plabel">Problem</span><p>Customs duty on imported goods (Basic Customs Duty, Social Welfare Surcharge, IGST) needed to be correctly loaded into stock item costs in Tally, without double-counting against P&amp;L ledger entries.</p></div>
+          <div class="project-block"><span class="plabel">Challenge</span><p>Customs duty on imported goods (Basic Customs Duty, Social Welfare Surcharge, IGST) needed to be correctly loaded into stock item costs in Tally, without double-counting against P&amp;L ledger entries.</p></div>
           <div class="project-block"><span class="plabel">Process</span><p>Reviewed Bills of Entry against HSN classifications and applicable notification references, and audited duty rates for consistency across shipments over time.</p></div>
           <div class="project-block"><span class="plabel">Tools</span><p>Tally Prime 7.0, Bill of Entry documentation, HSN/notification references.</p></div>
           <div class="project-block"><span class="plabel">Outcome</span><p>Duty costing aligned with AS-2 / Section 145A requirements, and a documented rate audit across a series of import shipments.</p></div>
@@ -707,7 +770,7 @@ section:first-of-type { border-top: none; }
 
         <article class="project-card">
           <div class="project-head"><h3>Consolidated Annual Reconciliation Workbooks</h3><span class="project-index">04</span></div>
-          <div class="project-block"><span class="plabel">Problem</span><p>Month-by-month GSTR-2A downloads needed consolidating into a single, navigable annual view for ITC reconciliation.</p></div>
+          <div class="project-block"><span class="plabel">Challenge</span><p>Month-by-month GSTR-2A downloads needed consolidating into a single, navigable annual view for ITC reconciliation.</p></div>
           <div class="project-block"><span class="plabel">Process</span><p>Wrote Python (openpyxl) scripts to build multi-sheet master workbooks covering all document types across a full financial year, with GSTIN-to-state lookups and formula-driven summaries.</p></div>
           <div class="project-block"><span class="plabel">Tools</span><p>Python, openpyxl, Excel, GST portal exports.</p></div>
           <div class="project-block"><span class="plabel">Outcome</span><p>Consolidated, structured annual reconciliation masters that replace scattered monthly files with one audit-ready reference.</p></div>
@@ -766,6 +829,16 @@ section:first-of-type { border-top: none; }
             <li>Correction</li>
           </ol>
         </div>
+        <div class="flow-set">
+          <span class="flow-caption">Import &amp; customs duty accounting</span>
+          <ol class="flow-row">
+            <li>Bill of Entry</li>
+            <li>Customs Duty</li>
+            <li>Inventory Cost</li>
+            <li>Tally Prime</li>
+            <li>Accounting Records</li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>
@@ -810,6 +883,12 @@ section:first-of-type { border-top: none; }
         <span class="eyebrow">Get In Touch</span>
         <h2 class="section-title">Contact</h2>
         <p class="section-sub">Open to accounting &amp; bookkeeping roles and remote engagements.</p>
+        <div class="tag-row">
+          <span class="tag">Employers → Accounting roles</span>
+          <span class="tag">Employers → Bookkeeping roles</span>
+          <span class="tag">Businesses → Remote accounting support</span>
+          <span class="tag">Businesses → Remote bookkeeping support</span>
+        </div>
       </div>
 
       <div class="contact-grid">
