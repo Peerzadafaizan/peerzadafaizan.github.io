@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-OH2IzKifbrscdZxaX+Eou7TREes7dTMtzYISatBk6AU='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-PYsvwbO03QejmFFWbMFYALawHTwkH5B8xTI/dh/U6W8=' 'sha256-kEyKsheUKhGsse/FDKF2PLmoZLL+KoJbR/d3Tn7felQ='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-6nafgOwbMQe9au0n0sB64R5ope2HGV0pDEC+CJ6ynSI='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-PYsvwbO03QejmFFWbMFYALawHTwkH5B8xTI/dh/U6W8=' 'sha256-kEyKsheUKhGsse/FDKF2PLmoZLL+KoJbR/d3Tn7felQ='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Peerzada Faizan Ahmad — Accountant | Tally Prime, GST & Reconciliation Specialist</title>
-<meta name="description" content="Peerzada Faizan Ahmad is an accountant based in Jammu & Kashmir, India, specializing in Tally Prime bookkeeping, GST compliance, multi-state GSTIN reconciliation, and e-commerce (Amazon FBA) accounting." />
-<meta name="keywords" content="Accountant, Accountant India, Accountant Kashmir, Tally Prime Accountant, GST Accountant, GST Reconciliation, Excel Accountant, E-commerce Accountant, Amazon Accounting, Bookkeeping" />
+<meta name="description" content="Peerzada Faizan Ahmad is an accountant based in Jammu & Kashmir, India, specializing in Tally Prime bookkeeping, GST compliance, multi-state GSTIN reconciliation, and e-commerce (Amazon FBA) accounting. Open to accounting and bookkeeping opportunities in India and the UAE, and remote accounting/bookkeeping support engagements." />
+<meta name="keywords" content="Accountant, Accountant India, Accountant Kashmir, Accountant UAE, Tally Prime Accountant, GST Accountant, GST Reconciliation, Excel Accountant, E-commerce Accountant, Amazon Accounting, Bookkeeping, Remote Bookkeeper, Remote Accountant India UAE, Accounts Payable Receivable" />
 <meta name="author" content="Peerzada Faizan Ahmad" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://peerzadafaizan.github.io/" />
@@ -201,8 +201,10 @@ h2.section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 700; le
 .hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal-500); box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal-500) 20%, transparent); }
 .hero h1 { margin-bottom: 16px; }
 .hero h1 .accent { color: var(--teal-500); }
-.hero-role { font-size: 1.05rem; font-weight: 500; color: var(--ink-700); margin-bottom: 20px; }
+.hero-role { font-size: 1.05rem; font-weight: 500; color: var(--ink-700); margin-bottom: 10px; }
 .hero-role .sep { color: var(--border-strong); margin: 0 8px; }
+.hero-markets { font-size: 0.88rem; font-weight: 600; color: var(--teal-text); margin-bottom: 20px; letter-spacing: 0.01em; }
+.hero-markets .sep { color: var(--border-strong); margin: 0 8px; font-weight: 400; }
 .hero-lede { font-size: 1.06rem; color: var(--ink-500); max-width: 560px; margin-bottom: 32px; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 22px; color: var(--ink-500); font-size: 0.88rem; }
@@ -261,6 +263,9 @@ section:first-of-type { border-top: none; }
 .expertise-card ul { display: flex; flex-direction: column; gap: 8px; }
 .expertise-card li { font-size: 0.85rem; color: var(--ink-500); padding-left: 14px; position: relative; line-height: 1.5; }
 .expertise-card li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--border-strong); }
+
+.focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.focus-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
 .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
 .tool-badge { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.15s ease, transform 0.15s ease; }
@@ -338,6 +343,7 @@ section:first-of-type { border-top: none; }
   .hero-inner { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; }
   .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+  .focus-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .workflow-grid { grid-template-columns: repeat(2, 1fr); }
   .resume-panel { grid-template-columns: 1fr; }
@@ -376,6 +382,7 @@ section:first-of-type { border-top: none; }
 
     <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#about">About</a>
+      <a href="#focus">Focus</a>
       <a href="#experience">Experience</a>
       <a href="#expertise">Expertise</a>
       <a href="#tools">Tools</a>
@@ -407,6 +414,7 @@ section:first-of-type { border-top: none; }
         <div class="hero-eyebrow"><span class="dot"></span><span class="eyebrow">Available for accounting &amp; bookkeeping engagements</span></div>
         <h1>Peerzada Faizan <span class="accent">Ahmad</span></h1>
         <p class="hero-role">Accountant <span class="sep">/</span> Tally Prime <span class="sep">/</span> GST <span class="sep">/</span> Reconciliation <span class="sep">/</span> E-Commerce Accounting</p>
+        <p class="hero-markets">India + UAE Accounting Opportunities <span class="sep">|</span> Remote Bookkeeping &amp; Accounting Support</p>
         <p class="hero-lede">I handle GST compliance, multi-state GSTIN reconciliation, and Tally Prime bookkeeping for a home appliances manufacturer with e-commerce operations — building Excel and Python-driven reconciliation workbooks that hold up to audit.</p>
         <div class="hero-ctas">
           <a href="#experience" class="btn btn-primary">View My Experience</a>
@@ -474,9 +482,60 @@ section:first-of-type { border-top: none; }
             <div class="about-fact"><span class="k">Education</span><span class="v">B.A. Economics, University of Kashmir</span></div>
             <div class="about-fact"><span class="k">Core system</span><span class="v">Tally Prime</span></div>
             <div class="about-fact"><span class="k">Specialization</span><span class="v">GST &amp; e-commerce reconciliation</span></div>
+            <div class="about-fact"><span class="k">Open to</span><span class="v">India &amp; UAE opportunities</span></div>
             <div class="about-fact"><span class="k">LinkedIn</span><span class="v"><a href="https://linkedin.com/in/peerzada-faizan-ahmad" target="_blank" rel="noopener noreferrer">/peerzada-faizan-ahmad</a></span></div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="focus" class="section-alt">
+    <div class="container">
+      <div class="section-kicker">
+        <span class="eyebrow">Professional Focus</span>
+        <h2 class="section-title">India + UAE accounting &amp; bookkeeping opportunities</h2>
+        <p class="section-sub">India-based accounting professional with practical experience in accounting operations, GST, reconciliation, Tally Prime, Excel, inventory and e-commerce accounting. Open to accounting and bookkeeping opportunities in India and the UAE, as well as remote accounting/bookkeeping support engagements for businesses in both markets.</p>
+      </div>
+
+      <div class="focus-grid">
+        <div class="expertise-card">
+          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>India</h3>
+          <ul>
+            <li>Accounting &amp; bookkeeping jobs</li>
+            <li>Accounts-support roles</li>
+            <li>GST, reconciliation &amp; Tally Prime engagements</li>
+            <li>Remote bookkeeping support for Indian businesses</li>
+          </ul>
+        </div>
+
+        <div class="expertise-card">
+          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
+          <h3>UAE</h3>
+          <ul>
+            <li>Open to UAE accounting &amp; bookkeeping opportunities</li>
+            <li>Open to UAE-based client engagements</li>
+            <li>Remote accounting support for UAE businesses</li>
+            <li>GST-built reconciliation discipline — a transferable foundation for VAT-style compliance work</li>
+          </ul>
+        </div>
+
+        <div class="expertise-card">
+          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <h3>Remote Support</h3>
+          <ul>
+            <li>Bookkeeping &amp; ledger maintenance</li>
+            <li>GST, bank &amp; marketplace reconciliations</li>
+            <li>Excel &amp; Python-based reporting</li>
+            <li>Inventory &amp; e-commerce accounting support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="focus-ctas">
+        <a href="#contact" class="btn btn-outline">Discuss an Opportunity</a>
+        <a href="#contact" class="btn btn-ghost">Discuss Remote Accounting Support</a>
       </div>
     </div>
   </section>
