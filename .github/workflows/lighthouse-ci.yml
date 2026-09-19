@@ -1,0 +1,29 @@
+name: Lighthouse CI
+
+# Continuous performance / accessibility / best-practices / SEO monitoring
+# for the live GitHub Pages site. Report-only: never blocks a deployment.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * 1" # weekly, Monday 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for GitHub Pages to publish the latest commit
+        if: github.event_name == 'push'
+        run: sleep 120
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            https://peerzadafaizan.github.io/
+          uploadArtifacts: true
+          temporaryPublicStorage: false
