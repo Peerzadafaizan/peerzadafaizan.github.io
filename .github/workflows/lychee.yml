@@ -26,8 +26,8 @@ jobs:
             --no-progress
             --exclude-mail
             --format markdown
-            --output ./lychee-report.md
             './**/*.html'
+          output: ./lychee-report.md
           fail: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
