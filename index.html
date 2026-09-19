@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-6nafgOwbMQe9au0n0sB64R5ope2HGV0pDEC+CJ6ynSI='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-PYsvwbO03QejmFFWbMFYALawHTwkH5B8xTI/dh/U6W8=' 'sha256-kEyKsheUKhGsse/FDKF2PLmoZLL+KoJbR/d3Tn7felQ='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-+xL6ru/jILvWisfNyNiDaonQrlu4Wa8QHZo0DfhRanw='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-bCjP5vx5pkshJw87TFknoUZ3t0gZk/8YmRdE3IfYewc=' 'sha256-pf7LFTUz0bO0becE3BcNXG4ZU7W//5rrrXZEHdz0n7w='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,28 +32,47 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<link id="gfonts-css" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" /></noscript>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Peerzada Faizan Ahmad",
-  "jobTitle": "Accountant",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Weltherm Home Appliances Pvt. Ltd."
-  },
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "University of Kashmir"
-  },
-  "url": "https://peerzadafaizan.github.io/",
-  "email": "mailto:peerfaizan2388@gmail.com",
-  "sameAs": [
-    "https://linkedin.com/in/peerzada-faizan-ahmad"
-  ],
-  "knowsAbout": ["Tally Prime", "GST Compliance", "GST Reconciliation", "E-Way Bill", "Amazon FBA Accounting", "Bookkeeping", "Microsoft Excel"]
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://peerzadafaizan.github.io/#person",
+      "name": "Peerzada Faizan Ahmad",
+      "jobTitle": "Accountant",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Weltherm Home Appliances Pvt. Ltd."
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Kashmir"
+      },
+      "url": "https://peerzadafaizan.github.io/",
+      "email": "mailto:peerfaizan2388@gmail.com",
+      "sameAs": [
+        "https://linkedin.com/in/peerzada-faizan-ahmad"
+      ],
+      "knowsAbout": ["Tally Prime", "GST Compliance", "GST Reconciliation", "E-Way Bill", "Amazon FBA Accounting", "Bookkeeping", "Microsoft Excel"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://peerzadafaizan.github.io/#website",
+      "url": "https://peerzadafaizan.github.io/",
+      "name": "Peerzada Faizan Ahmad — Accountant | Tally Prime, GST & Reconciliation Specialist",
+      "publisher": { "@id": "https://peerzadafaizan.github.io/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://peerzadafaizan.github.io/#profilepage",
+      "url": "https://peerzadafaizan.github.io/",
+      "mainEntity": { "@id": "https://peerzadafaizan.github.io/#person" }
+    }
+  ]
 }
 </script>
 </head>
@@ -70,6 +89,7 @@
   --teal-400: #35b3ab;
   --gold-500: #b08d3e;
   --teal-text: var(--teal-600);
+  --status-tint: 8%;
 
   --bg: #f7f7f5;
   --surface: #ffffff;
@@ -79,7 +99,7 @@
   --ink-900: #12181f;
   --ink-700: #384452;
   --ink-500: #5c6875;
-  --ink-400: #808a94;
+  --ink-400: #5e666d;
 
   --focus: #12968f;
 
@@ -108,11 +128,12 @@
     --ink-900: #f2f4f6;
     --ink-700: #cbd3da;
     --ink-500: #9aa7b3;
-    --ink-400: #74818d;
+    --ink-400: #7c8a97;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
     --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
     --teal-text: var(--teal-500);
+    --status-tint: 2%;
   }
 }
 :root[data-theme="dark"] {
@@ -123,11 +144,12 @@
   --ink-900: #f2f4f6;
   --ink-700: #cbd3da;
   --ink-500: #9aa7b3;
-  --ink-400: #74818d;
+  --ink-400: #7c8a97;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
   --teal-text: var(--teal-500);
+  --status-tint: 2%;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -249,7 +271,7 @@ section:first-of-type { border-top: none; }
 .timeline-item { display: grid; grid-template-columns: 190px 1fr; gap: 36px; padding: 36px 0; border-bottom: 1px solid var(--border); }
 .timeline-item:last-child { border-bottom: none; }
 .timeline-period { font-family: var(--font-mono); font-size: 0.82rem; color: var(--teal-text); font-weight: 600; padding-top: 3px; }
-.timeline-period .status { display: inline-block; margin-top: 10px; padding: 3px 9px; border-radius: 999px; background: color-mix(in srgb, var(--teal-500) 14%, transparent); color: var(--teal-text); font-size: 0.72rem; letter-spacing: 0.03em; }
+.timeline-period .status { display: inline-block; margin-top: 10px; padding: 3px 9px; border-radius: 999px; background: color-mix(in srgb, var(--teal-500) var(--status-tint), transparent); color: var(--teal-text); font-size: 0.72rem; letter-spacing: 0.03em; }
 .timeline-role { font-size: 1.15rem; font-weight: 700; color: var(--ink-900); margin-bottom: 2px; }
 .timeline-org { font-size: 0.94rem; color: var(--ink-500); margin-bottom: 16px; }
 .timeline-org span { color: var(--ink-700); }
@@ -275,7 +297,7 @@ section:first-of-type { border-top: none; }
 .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
 .tool-badge { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.15s ease, transform 0.15s ease; }
 .tool-badge:hover { border-color: var(--teal-500); transform: translateY(-2px); }
-.tool-badge .tool-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--teal-500); font-family: var(--font-mono); font-size: 11px; font-weight: 700; }
+.tool-badge .tool-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--teal-text); font-family: var(--font-mono); font-size: 11px; font-weight: 700; }
 .tool-badge .tool-name { font-size: 0.88rem; font-weight: 600; color: var(--ink-900); }
 .tool-badge .tool-use { font-size: 0.76rem; color: var(--ink-500); line-height: 1.4; }
 
@@ -944,6 +966,14 @@ section:first-of-type { border-top: none; }
 <script>
 (function () {
   "use strict";
+
+  var gfontsLink = document.getElementById("gfonts-css");
+  if (gfontsLink) {
+    gfontsLink.onload = function () { gfontsLink.rel = "stylesheet"; };
+    window.setTimeout(function () {
+      if (gfontsLink.rel !== "stylesheet") gfontsLink.rel = "stylesheet";
+    }, 3000);
+  }
 
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
