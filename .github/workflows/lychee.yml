@@ -24,7 +24,6 @@ jobs:
         with:
           args: >-
             --no-progress
-            --exclude-mail
             --format markdown
             './**/*.html'
           output: ./lychee-report.md
