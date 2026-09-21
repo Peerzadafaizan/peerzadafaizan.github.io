@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-Sj2WV0HI9U8EYSJktA7/AmAwleZJyBFtSshPt58z/Y0='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-bCjP5vx5pkshJw87TFknoUZ3t0gZk/8YmRdE3IfYewc=' 'sha256-TqeJmWjOcQ4DK0fXKGOvfHZcS20SPwjsAGlw0LBU0yI='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-gOiE+2p59XH87kOxMYxvncIO3XfWQ1Jp7gLgNhe5eAg='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-bCjP5vx5pkshJw87TFknoUZ3t0gZk/8YmRdE3IfYewc=' 'sha256-TqeJmWjOcQ4DK0fXKGOvfHZcS20SPwjsAGlw0LBU0yI='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -96,7 +96,7 @@
   --bg: #f7f7f5;
   --surface: #ffffff;
   --border: #e3e2dc;
-  --border-strong: #cfcec6;
+  --border-strong: #8f8d80;
 
   --ink-900: #12181f;
   --ink-700: #384452;
@@ -127,7 +127,7 @@
     --bg: #0a141f;
     --surface: #0f1e30;
     --border: #223449;
-    --border-strong: #2c4159;
+    --border-strong: #4a6684;
     --ink-900: #f2f4f6;
     --ink-700: #cbd3da;
     --ink-500: #9aa7b3;
@@ -143,7 +143,7 @@
   --bg: #0a141f;
   --surface: #0f1e30;
   --border: #223449;
-  --border-strong: #2c4159;
+  --border-strong: #4a6684;
   --ink-900: #f2f4f6;
   --ink-700: #cbd3da;
   --ink-500: #9aa7b3;
@@ -278,7 +278,7 @@ section:first-of-type { border-top: none; }
 .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 68px; }
 .stat-tile { background: var(--surface); padding: 26px 22px; position: relative; }
 .stat-tile .idx { position: absolute; top: 14px; right: 16px; font-family: var(--font-mono); font-size: 0.64rem; color: var(--ink-400); letter-spacing: 0.04em; }
-.stat-tile .num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--teal-600); display: block; margin-bottom: 6px; }
+.stat-tile .num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--teal-text); display: block; margin-bottom: 6px; }
 .stat-tile .cap { font-size: 0.82rem; color: var(--ink-500); line-height: 1.45; }
 
 .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
