@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-gOiE+2p59XH87kOxMYxvncIO3XfWQ1Jp7gLgNhe5eAg='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-bCjP5vx5pkshJw87TFknoUZ3t0gZk/8YmRdE3IfYewc=' 'sha256-TqeJmWjOcQ4DK0fXKGOvfHZcS20SPwjsAGlw0LBU0yI='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'sha256-LN2fA6azBzgjkxJUJr4se0crZnZwvcCnn22cZdE1zGE='; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-bCjP5vx5pkshJw87TFknoUZ3t0gZk/8YmRdE3IfYewc=' 'sha256-TqeJmWjOcQ4DK0fXKGOvfHZcS20SPwjsAGlw0LBU0yI='; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -248,8 +248,11 @@ h2.section-title { font-family: var(--font-display); font-size: clamp(1.6rem, 2.
 .hero h1 .accent { color: var(--teal-text); }
 .hero-role { font-size: 1.08rem; font-weight: 500; color: var(--ink-700); margin-bottom: 10px; }
 .hero-role .sep { color: var(--border-strong); margin: 0 8px; }
-.hero-markets { font-size: 0.88rem; font-weight: 600; color: var(--teal-text); margin-bottom: 22px; letter-spacing: 0.01em; }
-.hero-markets .sep { color: var(--border-strong); margin: 0 8px; font-weight: 400; }
+.hero-availability { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 22px; }
+.uae-pill { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em; color: var(--ink-900); background: color-mix(in srgb, var(--gold-500) 12%, transparent); border: 1px solid var(--border-strong); padding: 6px 12px; border-radius: 999px; transition: border-color 0.15s ease; }
+.uae-pill:hover { border-color: var(--gold-500); }
+.uae-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-500); flex-shrink: 0; }
+.hero-remote-note { font-size: 0.85rem; color: var(--ink-500); font-weight: 500; }
 .hero-lede { font-size: 1.08rem; color: var(--ink-500); max-width: 560px; margin-bottom: 34px; line-height: 1.65; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 22px; color: var(--ink-500); font-size: 0.88rem; padding-top: 22px; border-top: 1px solid var(--border); }
@@ -316,13 +319,7 @@ section:first-of-type { border-top: none; }
 
 .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .focus-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-
-.capability-strip { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
-.capability-strip .section-kicker { margin-bottom: 28px; }
-.capability-strip .section-title { font-size: clamp(1.25rem, 2vw, 1.5rem); }
-.capability-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.capability-col h4 { font-size: 0.86rem; font-weight: 700; color: var(--ink-900); margin-bottom: 12px; }
-.capability-col .tag-row { gap: 7px; }
+.focus-highlight { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border); font-size: 0.82rem; color: var(--teal-text); font-weight: 600; line-height: 1.5; }
 
 .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
 .tool-badge { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.15s ease; }
@@ -362,6 +359,7 @@ section:first-of-type { border-top: none; }
 .resume-copy h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin-bottom: 12px; color: var(--ink-900); }
 .resume-copy p { color: var(--ink-500); margin-bottom: 24px; font-size: 0.95rem; }
 .resume-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.resume-copy .resume-meta { font-size: 0.78rem; color: var(--ink-400); margin: 16px 0 0; }
 .resume-visual { background: linear-gradient(155deg, var(--navy-900), var(--navy-800)); padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 16px; position: relative; overflow: hidden; }
 .resume-visual::before { content: ""; position: absolute; inset: 0; background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 26px); }
 .resume-line { position: relative; display: flex; align-items: center; gap: 10px; }
@@ -401,7 +399,6 @@ section:first-of-type { border-top: none; }
   .about-grid { grid-template-columns: 1fr; }
   .expertise-grid { grid-template-columns: repeat(2, 1fr); }
   .focus-grid { grid-template-columns: 1fr; }
-  .capability-cols { grid-template-columns: 1fr; gap: 24px; }
   .projects-grid { grid-template-columns: 1fr; }
   .workflow-grid { grid-template-columns: repeat(2, 1fr); }
   .resume-panel { grid-template-columns: 1fr; }
@@ -409,8 +406,6 @@ section:first-of-type { border-top: none; }
   .contact-grid { grid-template-columns: 1fr; }
   .stat-strip { grid-template-columns: repeat(2, 1fr); }
   .timeline-item { grid-template-columns: 1fr; gap: 10px; }
-}
-@media (max-width: 1060px) {
   .nav-links, .nav-actions .btn-outline { display: none; }
   .nav-toggle { display: flex; }
   .nav-links.open { display: flex; position: absolute; top: 72px; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px 24px 20px; }
@@ -437,12 +432,10 @@ section:first-of-type { border-top: none; }
 
     <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#about">About</a>
-      <a href="#focus">Focus</a>
-      <a href="#experience">Experience</a>
       <a href="#expertise">Expertise</a>
-      <a href="#tools">Tools</a>
       <a href="#projects">Projects</a>
-      <a href="#workflow">How I Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#tools">Tools</a>
       <a href="#resume">Resume</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -468,12 +461,14 @@ section:first-of-type { border-top: none; }
       <div>
         <div class="hero-eyebrow"><span class="dot"></span><span class="eyebrow">Available for accounting &amp; bookkeeping engagements</span></div>
         <h1>Peerzada Faizan <span class="accent">Ahmad</span></h1>
-        <p class="hero-role">Accountant <span class="sep">/</span> Tally Prime <span class="sep">/</span> GST <span class="sep">/</span> Reconciliation <span class="sep">/</span> E-Commerce Accounting</p>
-        <p class="hero-markets">India + UAE Accounting Opportunities <span class="sep">|</span> Remote Bookkeeping &amp; Accounting Support</p>
+        <p class="hero-role">Accountant <span class="sep">/</span> Tally Prime <span class="sep">/</span> GST <span class="sep">/</span> Reconciliation <span class="sep">/</span> E-Commerce (Amazon FBA) Accounting</p>
+        <div class="hero-availability">
+          <a href="#focus" class="uae-pill"><span class="dot" aria-hidden="true"></span>India + UAE Accounting Opportunities</a>
+          <span class="hero-remote-note">Remote Bookkeeping &amp; Accounting Support</span>
+        </div>
         <p class="hero-lede">I handle GST compliance, multi-state GSTIN reconciliation, and Tally Prime bookkeeping for a home appliances manufacturer with e-commerce operations — building Excel and Python-driven reconciliation workbooks structured for audit and internal review.</p>
         <div class="hero-ctas">
-          <a href="#experience" class="btn btn-primary">View My Experience</a>
-          <a href="#expertise" class="btn btn-outline">Explore My Skills</a>
+          <a href="#contact" class="btn btn-primary">Contact Me</a>
           <a href="#projects" class="btn btn-outline">View My Work</a>
           <a href="Peerzada-Faizan-Ahmad-Resume.pdf" download class="btn btn-ghost">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
@@ -549,165 +544,6 @@ section:first-of-type { border-top: none; }
     </div>
   </section>
 
-  <section id="snapshot">
-    <div class="container">
-      <div class="section-kicker">
-        <span class="eyebrow eyebrow-line">Professional Snapshot</span>
-        <h2 class="section-title">At a glance</h2>
-      </div>
-      <div class="tools-grid">
-        <div class="tool-badge"><span class="tool-icon">3+</span><span class="tool-name">Years Experience</span></div>
-        <div class="tool-badge"><span class="tool-icon">TP</span><span class="tool-name">Tally Prime</span></div>
-        <div class="tool-badge"><span class="tool-icon">GST</span><span class="tool-name">GST Compliance</span></div>
-        <div class="tool-badge"><span class="tool-icon">RC</span><span class="tool-name">Reconciliation</span></div>
-        <div class="tool-badge"><span class="tool-icon">EC</span><span class="tool-name">E-Commerce Accounting</span></div>
-        <div class="tool-badge"><span class="tool-icon">XL</span><span class="tool-name">Excel</span></div>
-        <div class="tool-badge"><span class="tool-icon">PY</span><span class="tool-name">Python</span></div>
-        <div class="tool-badge"><span class="tool-icon">IN/AE</span><span class="tool-name">India + UAE Opportunities</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="focus" class="section-alt">
-    <div class="container">
-      <div class="section-kicker">
-        <span class="eyebrow eyebrow-line">Professional Focus</span>
-        <h2 class="section-title">India + UAE accounting &amp; bookkeeping opportunities</h2>
-        <p class="section-sub">India-based accounting professional with practical experience in accounting operations, GST, reconciliation, Tally Prime, Excel, inventory and e-commerce accounting. Open to accounting and bookkeeping opportunities in India and the UAE, as well as remote accounting/bookkeeping support engagements for businesses in both markets.</p>
-      </div>
-
-      <div class="focus-grid reveal-group">
-        <div class="expertise-card reveal">
-          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <h3>India</h3>
-          <ul>
-            <li>Accounting &amp; bookkeeping jobs</li>
-            <li>Accounts-support roles</li>
-            <li>GST, reconciliation &amp; Tally Prime engagements</li>
-            <li>Remote bookkeeping support for Indian businesses</li>
-          </ul>
-        </div>
-
-        <div class="expertise-card reveal">
-          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
-          <h3>UAE</h3>
-          <ul>
-            <li>Open to UAE accounting &amp; bookkeeping opportunities</li>
-            <li>Open to UAE-based client engagements</li>
-            <li>Remote accounting support for UAE businesses</li>
-            <li>GST-based reconciliation experience provides a transferable foundation for UAE VAT bookkeeping and reconciliation workflows</li>
-          </ul>
-        </div>
-
-        <div class="expertise-card reveal">
-          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-          <h3>Remote Support</h3>
-          <ul>
-            <li>Bookkeeping &amp; ledger maintenance</li>
-            <li>GST, bank &amp; marketplace reconciliations</li>
-            <li>Excel &amp; Python-based reporting</li>
-            <li>Inventory &amp; e-commerce accounting support</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="focus-ctas">
-        <a href="#contact" class="btn btn-outline">Discuss an Opportunity</a>
-        <a href="#contact" class="btn btn-ghost">Discuss Remote Accounting Support</a>
-      </div>
-
-      <div class="capability-strip">
-        <div class="section-kicker">
-          <span class="eyebrow eyebrow-line">What I Can Support</span>
-          <h2 class="section-title">Day-to-day accounting &amp; bookkeeping support</h2>
-          <p class="section-sub">Capability areas grounded in the day-to-day work described above — for employers hiring an accountant, and for businesses needing remote accounting or bookkeeping support.</p>
-        </div>
-        <div class="capability-cols">
-          <div class="capability-col">
-            <h4>Bookkeeping &amp; Ledgers</h4>
-            <div class="tag-row">
-              <span class="tag">Bookkeeping</span>
-              <span class="tag">Sales &amp; purchase accounting</span>
-              <span class="tag">Ledger reconciliation</span>
-              <span class="tag">Inventory accounting</span>
-            </div>
-          </div>
-          <div class="capability-col">
-            <h4>GST &amp; Compliance</h4>
-            <div class="tag-row">
-              <span class="tag">GST &amp; reconciliation</span>
-              <span class="tag">Bank reconciliation</span>
-              <span class="tag">AP / AR support</span>
-              <span class="tag">Import accounting</span>
-            </div>
-          </div>
-          <div class="capability-col">
-            <h4>Reporting &amp; Systems</h4>
-            <div class="tag-row">
-              <span class="tag">Tally Prime</span>
-              <span class="tag">Excel-based reporting</span>
-              <span class="tag">E-commerce / Amazon accounting</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="container">
-      <div class="section-kicker">
-        <span class="eyebrow eyebrow-line">Experience</span>
-        <h2 class="section-title">Professional Experience</h2>
-        <p class="section-sub">Roles, responsibilities, and the systems used in each.</p>
-      </div>
-
-      <div class="timeline">
-        <article class="timeline-item">
-          <div class="timeline-period">Apr 2025 — Present<span class="status">Current</span></div>
-          <div>
-            <h3 class="timeline-role">Accountant</h3>
-            <p class="timeline-org">Weltherm Home Appliances Pvt. Ltd. <span>· Srinagar, Jammu &amp; Kashmir</span></p>
-            <ul class="timeline-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Maintain state-wise GST registrations — Kashmir as the Principal Place of Business / main GST registration (GSTIN), and separate GST registrations with Amazon FBA warehouse/hub operations in Haryana, Karnataka, Maharashtra and West Bengal — with additional GST registrations and Amazon FBA warehouse locations that may be added in the future as the business expands.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Handle GSTIN-wise bookkeeping, accounting records and GST reconciliation separately for each state registration, including multi-state Amazon FBA operations.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Reconcile GSTR-8 TCS data against Tally sales records for e-commerce sales, and GSTR-2A/2B supplier data against Tally purchase registers for ITC utilisation and GST set-off under Rule 88A.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Prepare and file monthly GST returns — GSTR-1 and GSTR-3B — for the applicable GST registrations.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Maintain day-to-day Tally Prime bookkeeping — sales, purchases, ledgers and inventory.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Handle import accounting — costing Basic Customs Duty and Social Welfare Surcharge into stock item values in Tally Prime, in line with AS-2 and Section 145A.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Generate E-Way Bills for import shipments, including multi-leg transport with Part-B updates.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Build Excel and Python (openpyxl) reconciliation workbooks with formula-driven summaries and conditional-formatting match-status flags.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Tally Prime 7.0</span>
-              <span class="tag">GSTR-1 / GSTR-3B / GSTR-2A/2B</span>
-              <span class="tag">Amazon FBA</span>
-              <span class="tag">Excel + Python</span>
-              <span class="tag">E-Way Bill</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="timeline-item">
-          <div class="timeline-period">Jun 2023 — Apr 2025</div>
-          <div>
-            <h3 class="timeline-role">Accountant &amp; Data Entry Team Leader</h3>
-            <p class="timeline-org">Alrit and Associates</p>
-            <ul class="timeline-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Handled core accounting and data entry operations, and led a data entry team.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Built the foundational bookkeeping and GST filing experience carried into the current role.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Bookkeeping</span>
-              <span class="tag">Data Entry Leadership</span>
-              <span class="tag">GST Filing</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section id="expertise" class="section-alt">
     <div class="container">
       <div class="section-kicker">
@@ -768,25 +604,7 @@ section:first-of-type { border-top: none; }
     </div>
   </section>
 
-  <section id="tools">
-    <div class="container">
-      <div class="section-kicker">
-        <span class="eyebrow eyebrow-line">Software &amp; Tools</span>
-        <h2 class="section-title">Technology I work in daily</h2>
-      </div>
-
-      <div class="tools-grid">
-        <div class="tool-badge"><span class="tool-icon">TP</span><span class="tool-name">Tally Prime 7.0</span><span class="tool-use">Bookkeeping, inventory &amp; import costing</span></div>
-        <div class="tool-badge"><span class="tool-icon">XL</span><span class="tool-name">Microsoft Excel</span><span class="tool-use">SUMIF/COUNTIFS, conditional formatting</span></div>
-        <div class="tool-badge"><span class="tool-icon">PY</span><span class="tool-name">Python (openpyxl)</span><span class="tool-use">Reconciliation workbook automation</span></div>
-        <div class="tool-badge"><span class="tool-icon">GST</span><span class="tool-name">GST Portal</span><span class="tool-use">GSTR-1/3B filings; GSTR-2A/2B &amp; GSTR-8 downloads</span></div>
-        <div class="tool-badge"><span class="tool-icon">EWB</span><span class="tool-name">E-Way Bill Portal</span><span class="tool-use">Multi-leg import transport</span></div>
-        <div class="tool-badge"><span class="tool-icon">AZ</span><span class="tool-name">Amazon Seller Central</span><span class="tool-use">FBA reports &amp; TCS reconciliation</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="section-alt">
+  <section id="projects">
     <div class="container">
       <div class="section-kicker">
         <span class="eyebrow eyebrow-line">Work Showcase</span>
@@ -835,7 +653,7 @@ section:first-of-type { border-top: none; }
     </div>
   </section>
 
-  <section id="workflow">
+  <section id="workflow" class="section-alt">
     <div class="container">
       <div class="section-kicker">
         <span class="eyebrow eyebrow-line">Process</span>
@@ -897,6 +715,128 @@ section:first-of-type { border-top: none; }
     </div>
   </section>
 
+  <section id="experience">
+    <div class="container">
+      <div class="section-kicker">
+        <span class="eyebrow eyebrow-line">Experience</span>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-sub">Roles, responsibilities, and the systems used in each.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-period">Apr 2025 — Present<span class="status">Current</span></div>
+          <div>
+            <h3 class="timeline-role">Accountant</h3>
+            <p class="timeline-org">Weltherm Home Appliances Pvt. Ltd. <span>· Srinagar, Jammu &amp; Kashmir</span></p>
+            <ul class="timeline-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Maintain state-wise GST registrations — Kashmir as the Principal Place of Business / main GST registration (GSTIN), and separate GST registrations with Amazon FBA warehouse/hub operations in Haryana, Karnataka, Maharashtra and West Bengal — with additional GST registrations and Amazon FBA warehouse locations that may be added in the future as the business expands.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Handle GSTIN-wise bookkeeping, accounting records and GST reconciliation separately for each state registration, including multi-state Amazon FBA operations.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Reconcile GSTR-8 TCS data against Tally sales records for e-commerce sales, and GSTR-2A/2B supplier data against Tally purchase registers for ITC utilisation and GST set-off under Rule 88A.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Prepare and file monthly GST returns — GSTR-1 and GSTR-3B — for the applicable GST registrations.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Maintain day-to-day Tally Prime bookkeeping — sales, purchases, ledgers and inventory.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Handle import accounting — costing Basic Customs Duty and Social Welfare Surcharge into stock item values in Tally Prime, in line with AS-2 and Section 145A.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Generate E-Way Bills for import shipments, including multi-leg transport with Part-B updates.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Build Excel and Python (openpyxl) reconciliation workbooks with formula-driven summaries and conditional-formatting match-status flags.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Tally Prime 7.0</span>
+              <span class="tag">GSTR-1 / GSTR-3B / GSTR-2A/2B</span>
+              <span class="tag">Amazon FBA</span>
+              <span class="tag">Excel + Python</span>
+              <span class="tag">E-Way Bill</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-period">Jun 2023 — Apr 2025</div>
+          <div>
+            <h3 class="timeline-role">Accountant &amp; Data Entry Team Leader</h3>
+            <p class="timeline-org">Alrit and Associates</p>
+            <ul class="timeline-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Handled core accounting and data entry operations, and led a data entry team.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Built the foundational bookkeeping and GST filing experience carried into the current role.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Bookkeeping</span>
+              <span class="tag">Data Entry Leadership</span>
+              <span class="tag">GST Filing</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools" class="section-alt">
+    <div class="container">
+      <div class="section-kicker">
+        <span class="eyebrow eyebrow-line">Software &amp; Tools</span>
+        <h2 class="section-title">Technology I work in daily</h2>
+      </div>
+
+      <div class="tools-grid">
+        <div class="tool-badge"><span class="tool-icon">TP</span><span class="tool-name">Tally Prime 7.0</span><span class="tool-use">Bookkeeping, inventory &amp; import costing</span></div>
+        <div class="tool-badge"><span class="tool-icon">XL</span><span class="tool-name">Microsoft Excel</span><span class="tool-use">SUMIF/COUNTIFS, conditional formatting</span></div>
+        <div class="tool-badge"><span class="tool-icon">PY</span><span class="tool-name">Python (openpyxl)</span><span class="tool-use">Reconciliation workbook automation</span></div>
+        <div class="tool-badge"><span class="tool-icon">GST</span><span class="tool-name">GST Portal</span><span class="tool-use">GSTR-1/3B filings; GSTR-2A/2B &amp; GSTR-8 downloads</span></div>
+        <div class="tool-badge"><span class="tool-icon">EWB</span><span class="tool-name">E-Way Bill Portal</span><span class="tool-use">Multi-leg import transport</span></div>
+        <div class="tool-badge"><span class="tool-icon">AZ</span><span class="tool-name">Amazon Seller Central</span><span class="tool-use">FBA reports &amp; TCS reconciliation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="focus">
+    <div class="container">
+      <div class="section-kicker">
+        <span class="eyebrow eyebrow-line">Availability</span>
+        <h2 class="section-title">India + UAE accounting &amp; bookkeeping opportunities</h2>
+        <p class="section-sub">Open to accounting and bookkeeping roles in India and the UAE, and to remote accounting/bookkeeping support engagements for businesses in both markets.</p>
+      </div>
+
+      <div class="focus-grid reveal-group">
+        <div class="expertise-card reveal">
+          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>India</h3>
+          <ul>
+            <li>Accounting &amp; bookkeeping jobs</li>
+            <li>Accounts-support roles</li>
+            <li>GST, reconciliation &amp; Tally Prime engagements</li>
+            <li>Remote bookkeeping support for Indian businesses</li>
+          </ul>
+        </div>
+
+        <div class="expertise-card reveal">
+          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
+          <h3>UAE</h3>
+          <ul>
+            <li>Open to UAE accounting &amp; bookkeeping opportunities</li>
+            <li>Open to UAE-based client engagements</li>
+            <li>Remote accounting support for UAE businesses</li>
+          </ul>
+          <p class="focus-highlight">GST-based reconciliation experience provides a transferable foundation for UAE VAT bookkeeping and reconciliation workflows.</p>
+        </div>
+
+        <div class="expertise-card reveal">
+          <div class="expertise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <h3>Remote Support</h3>
+          <ul>
+            <li>Bookkeeping &amp; ledger maintenance</li>
+            <li>GST, bank &amp; marketplace reconciliations</li>
+            <li>Excel &amp; Python-based reporting</li>
+            <li>Inventory &amp; e-commerce accounting support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="focus-ctas">
+        <a href="#contact" class="btn btn-outline">Discuss an Opportunity</a>
+        <a href="#contact" class="btn btn-ghost">Discuss Remote Accounting Support</a>
+      </div>
+    </div>
+  </section>
+
   <section id="resume" class="section-alt">
     <div class="container">
       <div class="section-kicker">
@@ -919,6 +859,7 @@ section:first-of-type { border-top: none; }
             </a>
             <a href="#contact" class="btn btn-ghost">Contact Me →</a>
           </div>
+          <p class="resume-meta">Updated September 2026 · 1 page · PDF</p>
         </div>
         <div class="resume-visual" aria-hidden="true">
           <div class="resume-line"><div class="bar b1"></div></div>
@@ -982,7 +923,7 @@ section:first-of-type { border-top: none; }
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <p>© <span id="year"></span> Peerzada Faizan Ahmad. All rights reserved.</p>
+    <p>© <span id="year"></span> Peerzada Faizan Ahmad. All rights reserved. · Open to India + UAE accounting opportunities.</p>
     <div class="footer-links">
       <a href="mailto:peerfaizan2388@gmail.com">Email</a>
       <a href="https://linkedin.com/in/peerzada-faizan-ahmad" target="_blank" rel="noopener noreferrer">LinkedIn</a>
