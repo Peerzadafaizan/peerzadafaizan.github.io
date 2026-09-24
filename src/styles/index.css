@@ -7,6 +7,9 @@
 
 @import "tailwindcss";
 
+/* Content files hold copy, not class names — keep their words from generating stray utilities. */
+@source not "../content";
+
 /* `dark:` variant — an explicit toggle choice (data-theme) wins; otherwise follow the OS. */
 @custom-variant dark {
   &:where([data-theme="dark"], [data-theme="dark"] *) {
