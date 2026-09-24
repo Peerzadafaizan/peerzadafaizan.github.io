@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useMotion } from './animations/useMotion.ts'
 import { Footer } from './components/layout/Footer.tsx'
 import { Header } from './components/layout/Header.tsx'
 import { SkipLink } from './components/layout/SkipLink.tsx'
@@ -16,24 +17,28 @@ import { site } from './content/index.ts'
  * Site shell (skip link, header, navigation, theme toggle, footer) plus all page sections, in the
  * approved order (`sectionOrder` / `topLevelSections` in src/content/index.ts): Hero, Case Studies,
  * How I Work, Expertise (+ Tools part), India + UAE, Experience (+ About part), CV, Contact.
- * Every word comes from src/content.
+ * Every word comes from src/content. Motion (GSAP + ScrollTrigger) attaches to <main> through
+ * useMotion — see src/animations/. The header, mobile menu and footer are not animated by GSAP.
  */
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const mainRef = useRef<HTMLElement>(null)
+  useMotion(mainRef)
 
   // The page is rendered by JavaScript, so a URL opened with a #section hash arrives before that
   // section exists. Jump to it once after the first render (prerendering in a later stage makes
-  // this native again; the effect is then a harmless no-op).
+  // this native again; the effect is then a harmless no-op). The jump is instant, like a browser's
+  // own hash landing — a smooth scroll here would be cut short by ScrollTrigger's load-time refresh.
   useEffect(() => {
     const id = decodeURIComponent(window.location.hash.slice(1))
-    if (id) document.getElementById(id)?.scrollIntoView({ block: 'start' })
+    if (id) document.getElementById(id)?.scrollIntoView({ block: 'start', behavior: 'instant' })
   }, [])
 
   return (
     <>
       <SkipLink />
       <Header menuOpen={menuOpen} onMenuOpenChange={setMenuOpen} />
-      <main id={site.mainId} tabIndex={-1} inert={menuOpen} className="outline-none">
+      <main ref={mainRef} id={site.mainId} tabIndex={-1} inert={menuOpen} className="outline-none">
         <Hero />
         <CaseStudies />
         <HowIWork />
