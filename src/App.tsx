@@ -3,11 +3,11 @@ import { SectionAnchor } from './components/layout/SectionAnchor.tsx'
 import { Footer } from './components/layout/Footer.tsx'
 import { Header } from './components/layout/Header.tsx'
 import { SkipLink } from './components/layout/SkipLink.tsx'
+import { CaseStudies } from './sections/CaseStudies.tsx'
 import { Hero } from './sections/Hero.tsx'
 import {
   about,
   availability,
-  caseStudies,
   contact,
   experience,
   expertise,
@@ -19,7 +19,7 @@ import {
 
 /**
  * Site shell (skip link, header, navigation, theme toggle, footer) plus the page sections.
- * Stage 4 builds the sections one at a time (Hero done); the rest are still placeholders carrying
+ * Stage 4 builds the sections one at a time (Hero and Case Studies done); the rest are still placeholders carrying
  * only their existing id, eyebrow and title from src/content. Page order matches the live site.
  */
 export default function App() {
@@ -41,7 +41,7 @@ export default function App() {
         <Hero />
         <SectionAnchor heading={about.heading} />
         <SectionAnchor heading={expertise.heading} alt />
-        <SectionAnchor heading={caseStudies.heading} />
+        <CaseStudies />
         <SectionAnchor heading={howIWork.heading} alt />
         <SectionAnchor heading={experience.heading} />
         <SectionAnchor heading={tools.heading} alt />
