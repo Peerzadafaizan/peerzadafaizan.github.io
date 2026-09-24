@@ -1,5 +1,6 @@
 import { footer } from '../../content/index.ts'
 import { focusHashTarget } from '../../hooks/focusTarget.ts'
+import { linkUnderline } from '../../animations/interactions.ts'
 
 export function Footer({ inert }: { inert?: boolean }) {
   const year = new Date().getFullYear()
@@ -16,7 +17,7 @@ export function Footer({ inert }: { inert?: boolean }) {
                 href={link.href}
                 {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 onClick={() => focusHashTarget(link.href)}
-                className="inline-flex min-h-tap items-center px-2 text-small text-ink-muted transition-colors duration-150 hover:text-accent motion-reduce:transition-none"
+                className={`inline-flex min-h-tap items-center px-2 text-small text-ink-muted hover:text-accent motion-reduce:transition-none ${linkUnderline}`}
               >
                 {link.label}
               </a>
