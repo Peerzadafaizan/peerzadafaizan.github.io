@@ -1,25 +1,22 @@
 import { useEffect, useState } from 'react'
-import { SectionAnchor } from './components/layout/SectionAnchor.tsx'
 import { Footer } from './components/layout/Footer.tsx'
 import { Header } from './components/layout/Header.tsx'
 import { SkipLink } from './components/layout/SkipLink.tsx'
 import { CaseStudies } from './sections/CaseStudies.tsx'
+import { Contact } from './sections/Contact.tsx'
 import { Experience } from './sections/Experience.tsx'
 import { Expertise } from './sections/Expertise.tsx'
 import { Hero } from './sections/Hero.tsx'
 import { HowIWork } from './sections/HowIWork.tsx'
 import { IndiaUae } from './sections/IndiaUae.tsx'
-import {
-  contact,
-  resume,
-  site,
-} from './content/index.ts'
+import { Resume } from './sections/Resume.tsx'
+import { site } from './content/index.ts'
 
 /**
- * Site shell (skip link, header, navigation, theme toggle, footer) plus the page sections.
- * Stage 4 builds the sections one at a time (Hero, Case Studies, How I Work, Expertise + Tools, India + UAE, Experience + About done); the rest are still placeholders carrying
- * only their existing id, eyebrow and title from src/content. Page order follows `sectionOrder` in src/content/index.ts (approved reorder); Tools is a part of
- * Expertise and About a part of Experience (approved merges, `sectionMerges`).
+ * Site shell (skip link, header, navigation, theme toggle, footer) plus all page sections, in the
+ * approved order (`sectionOrder` / `topLevelSections` in src/content/index.ts): Hero, Case Studies,
+ * How I Work, Expertise (+ Tools part), India + UAE, Experience (+ About part), CV, Contact.
+ * Every word comes from src/content.
  */
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -43,8 +40,8 @@ export default function App() {
         <Expertise />
         <IndiaUae />
         <Experience />
-        <SectionAnchor heading={resume.heading} alt />
-        <SectionAnchor heading={contact.heading} />
+        <Resume />
+        <Contact />
       </main>
       <Footer inert={menuOpen} />
     </>
