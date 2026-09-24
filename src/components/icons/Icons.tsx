@@ -64,3 +64,10 @@ export const DownloadIcon = (p: SVGProps<SVGSVGElement>) => (
     <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" />
   </svg>
 )
+
+/* Flow-diagram connector (decorative; the order is conveyed by the ordered list). */
+export const ArrowRightIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+)
