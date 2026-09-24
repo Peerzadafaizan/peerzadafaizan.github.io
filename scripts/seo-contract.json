@@ -1,0 +1,77 @@
+{
+  "title": "Peerzada Faizan Ahmad — Accountant | Tally Prime, GST & Reconciliation Specialist",
+  "canonical": "https://peerzadafaizan.github.io/",
+  "csp": "default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests",
+  "meta": {
+    "referrer": "strict-origin-when-cross-origin",
+    "viewport": "width=device-width, initial-scale=1.0",
+    "description": "Peerzada Faizan Ahmad is an accountant based in Jammu & Kashmir, India, specializing in Tally Prime bookkeeping, GST compliance, multi-state GSTIN reconciliation, and e-commerce (Amazon FBA) accounting. Open to accounting and bookkeeping opportunities in India and the UAE, and remote accounting/bookkeeping support engagements.",
+    "keywords": "Accountant, Accountant India, Accountant Kashmir, Accountant UAE, Tally Prime Accountant, GST Accountant, GST Reconciliation, Excel Accountant, E-commerce Accountant, Amazon Accounting, Bookkeeping, Remote Bookkeeper, Remote Accountant India UAE, Accounts Payable Receivable",
+    "author": "Peerzada Faizan Ahmad",
+    "robots": "index, follow",
+    "og:type": "profile",
+    "og:title": "Peerzada Faizan Ahmad — Accountant | Tally Prime, GST & Reconciliation Specialist",
+    "og:description": "Accountant specializing in Tally Prime bookkeeping, GST compliance, multi-state GSTIN reconciliation, and e-commerce (Amazon FBA) accounting — based in Jammu & Kashmir, India.",
+    "og:url": "https://peerzadafaizan.github.io/",
+    "og:image": "https://peerzadafaizan.github.io/profile-photo.jpg",
+    "og:image:width": "640",
+    "og:image:height": "640",
+    "og:image:alt": "Peerzada Faizan Ahmad",
+    "profile:first_name": "Faizan",
+    "profile:last_name": "Ahmad",
+    "twitter:card": "summary",
+    "twitter:title": "Peerzada Faizan Ahmad — Accountant | Tally Prime, GST & Reconciliation",
+    "twitter:description": "Accountant specializing in Tally Prime bookkeeping, GST compliance, multi-state GSTIN reconciliation, and e-commerce (Amazon FBA) accounting.",
+    "twitter:image": "https://peerzadafaizan.github.io/profile-photo.jpg"
+  },
+  "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://peerzadafaizan.github.io/#person",
+        "name": "Peerzada Faizan Ahmad",
+        "jobTitle": "Accountant",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Weltherm Home Appliances Pvt. Ltd."
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Kashmir"
+        },
+        "url": "https://peerzadafaizan.github.io/",
+        "email": "mailto:peerfaizan2388@gmail.com",
+        "sameAs": [
+          "https://linkedin.com/in/peerzada-faizan-ahmad"
+        ],
+        "knowsAbout": [
+          "Tally Prime",
+          "GST Compliance",
+          "GST Reconciliation",
+          "E-Way Bill",
+          "Amazon FBA Accounting",
+          "Bookkeeping",
+          "Microsoft Excel"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://peerzadafaizan.github.io/#website",
+        "url": "https://peerzadafaizan.github.io/",
+        "name": "Peerzada Faizan Ahmad — Accountant | Tally Prime, GST & Reconciliation Specialist",
+        "publisher": {
+          "@id": "https://peerzadafaizan.github.io/#person"
+        }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://peerzadafaizan.github.io/#profilepage",
+        "url": "https://peerzadafaizan.github.io/",
+        "mainEntity": {
+          "@id": "https://peerzadafaizan.github.io/#person"
+        }
+      }
+    ]
+  }
+}
