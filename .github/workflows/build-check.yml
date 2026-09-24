@@ -1,0 +1,47 @@
+name: Build check
+
+# Type-checks, builds and verifies the React rebuild. Build-only: this workflow never deploys.
+# GitHub Pages keeps deploying `main` exactly as before until a separate, approved cutover.
+on:
+  push:
+    branches: [redesign/react]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install (from lockfile)
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify SEO contract, CSP-safe markup and public/ assets
+        run: npm run verify
+
+      - name: Upload build output (for review only — not deployed)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          include-hidden-files: true
+          retention-days: 7
