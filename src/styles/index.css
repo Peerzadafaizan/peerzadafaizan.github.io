@@ -114,6 +114,22 @@
   padding-inline: var(--gutter);
 }
 
+/* Hero-only "ledger" motif: faint ruled lines fading out towards the bottom. Decorative. */
+@utility hero-ledger {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--line) 70%, transparent) 0 1px,
+      transparent 1px 40px
+    );
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+  }
+}
+
 /* Mobile menu entrance — used only under motion-safe:, so reduced-motion users get none. */
 @theme {
   --animate-sheet-in: sheet-in 200ms var(--ease-out);
