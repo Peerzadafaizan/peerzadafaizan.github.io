@@ -1,6 +1,6 @@
 name: Build check
 
-# Type-checks, builds and verifies the React rebuild. Build-only: this workflow never deploys.
+# Type-checks, builds, verifies and content-parity-checks the React rebuild. Build-only: this workflow never deploys.
 # GitHub Pages keeps deploying `main` exactly as before until a separate, approved cutover.
 on:
   push:
@@ -20,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: the content-parity check reads the original page from main @ bd1dab3.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -37,6 +40,9 @@ jobs:
 
       - name: Verify SEO contract, CSP-safe markup and public/ assets
         run: npm run verify
+
+      - name: Content parity vs main @ bd1dab3 (text, headings, links, metadata, JSON-LD)
+        run: npm run parity
 
       - name: Upload build output (for review only — not deployed)
         uses: actions/upload-artifact@v4
