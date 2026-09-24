@@ -3,6 +3,7 @@ import { contact } from '../content/index.ts'
 import { LinkedInIcon, MailIcon, PinIcon } from '../components/icons/Icons.tsx'
 import { SectionHeader } from '../components/ui/SectionHeader.tsx'
 import { buttonClasses } from '../components/ui/button.ts'
+import { cardHover, groupLinkUnderline } from '../animations/interactions.ts'
 
 const rowIcons = [MailIcon, LinkedInIcon, PinIcon]
 /** Browser autofill hints (no new fields; helps mobile keyboards and autofill). */
@@ -31,6 +32,8 @@ const fieldClass =
  *  - otherwise open mailto:<recipient>?subject=…&body=Name: …\nEmail: …\n\n<message>
  *    and show "Opening your email client to send this message…".
  * The status line is announced to screen readers (role="status").
+ * Motion (once, on scroll): heading, audience tags, then the contact card and the form (as whole
+ * blocks — fields never move individually). Form behaviour is unchanged.
  */
 export function Contact() {
   const { heading, audiences, direct, form } = contact
@@ -54,7 +57,7 @@ export function Contact() {
     <section id={heading.id} tabIndex={-1} aria-labelledby={`${heading.id}-title`} className="border-t border-line py-section outline-none">
       <div className="container-page">
         <SectionHeader heading={heading} />
-        <ul className="mt-5 flex flex-wrap gap-2">
+        <ul data-reveal="fade" className="mt-5 flex flex-wrap gap-2">
           {audiences.map((a) => (
             <li key={a} className="rounded-sm border border-line bg-surface px-2.5 py-1 font-mono text-[0.76rem] text-ink-muted">
               {a}
@@ -64,7 +67,7 @@ export function Contact() {
 
         <div className="mt-10 grid gap-6 sm:mt-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8">
           {/* Direct contact */}
-          <div className="self-start rounded-lg border border-line bg-surface p-6 sm:p-7">
+          <div data-reveal className={`self-start rounded-lg border border-line bg-surface p-6 sm:p-7 ${cardHover}`}>
             <h3 className="text-h3 font-semibold text-ink">{direct.title}</h3>
             <ul className="mt-3">
               {direct.rows.map((row, i) => {
@@ -74,7 +77,7 @@ export function Contact() {
                     <Icon className="mt-0.5 size-[18px] shrink-0 text-icon" />
                     <span className="min-w-0">
                       <span className="block text-[0.72rem] font-semibold tracking-[0.06em] text-ink-muted uppercase">{row.key}</span>
-                      <span className="block break-words text-ink">{row.value}</span>
+                      <span className={`block break-words text-ink ${row.href ? groupLinkUnderline : ''}`}>{row.value}</span>
                     </span>
                   </>
                 )
@@ -98,7 +101,13 @@ export function Contact() {
           </div>
 
           {/* Form */}
-          <form id={form.id} onSubmit={onSubmit} aria-labelledby="contact-form-title" className="rounded-lg border border-line bg-surface p-6 sm:p-7">
+          <form
+            id={form.id}
+            data-reveal
+            onSubmit={onSubmit}
+            aria-labelledby="contact-form-title"
+            className={`rounded-lg border border-line bg-surface p-6 sm:p-7 ${cardHover}`}
+          >
             <h3 id="contact-form-title" className="text-h3 font-semibold text-ink">
               {form.title}
             </h3>

@@ -3,6 +3,7 @@ import { hero, identity } from '../content/index.ts'
 import type { Link } from '../content/index.ts'
 import { focusHashTarget } from '../hooks/focusTarget.ts'
 import { BriefcaseIcon, ClockIcon, DownloadIcon, PinIcon } from '../components/icons/Icons.tsx'
+import { ArrowLabel } from '../components/ui/ArrowLabel.tsx'
 import { buttonClasses } from '../components/ui/button.ts'
 
 const TITLE_ID = 'hero-title'
@@ -37,6 +38,8 @@ function Photo({ className }: { className: string }) {
  * the card's "Profile Record · REC-001" row are approved changes (scripts/approved-changes.json).
  * Layout: mobile-first single column (photo first); from 900px a two-column split with the
  * profile card on the right. The faint ruled lines are the hero-only "ledger" motif.
+ * Motion: a short entrance on load (data-intro order: eyebrow → headline → name → roles/lede →
+ * CTAs → availability/meta → profile card). Wording and layout are unaffected.
  */
 export function Hero() {
   return (
@@ -49,7 +52,7 @@ export function Hero() {
       <div className="container-page relative grid gap-10 py-8 sm:py-14 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)] md:items-center md:gap-12 md:py-16 lg:gap-16">
         {/* Main column */}
         <div className="min-w-0">
-          <div className="flex items-center gap-4">
+          <div data-intro="1" className="flex items-center gap-4">
             <Photo className="size-14 md:hidden" />
             <p className="flex items-start gap-2.5 font-mono text-label font-semibold uppercase tracking-[0.1em] text-accent">
               <span aria-hidden="true" className="mt-[5px] size-1.5 shrink-0 rounded-full bg-icon ring-3 ring-icon/20" />
@@ -58,17 +61,18 @@ export function Hero() {
           </div>
 
           <h1
+            data-intro="2"
             id={TITLE_ID}
             className="mt-4 max-w-[20ch] font-display text-[1.875rem] leading-[1.12] font-semibold tracking-[-0.015em] text-ink sm:text-[2.5rem] lg:text-[3.25rem] lg:leading-[1.06]"
           >
             {hero.headline}
           </h1>
 
-          <p className="mt-4 font-display text-[1.375rem] leading-tight font-semibold text-ink sm:text-2xl">
+          <p data-intro="3" className="mt-4 font-display text-[1.375rem] leading-tight font-semibold text-ink sm:text-2xl">
             {hero.name.lead} <span className="text-accent">{hero.name.accent}</span>
           </p>
 
-          <p className="mt-4 max-w-measure text-[0.9375rem] leading-relaxed text-ink-body sm:text-lg">
+          <p data-intro="4" className="mt-4 max-w-measure text-[0.9375rem] leading-relaxed text-ink-body sm:text-lg">
             {/* Each separator stays on the line of the role before it, so no line starts with "/". */}
             {hero.roles.map((role, i) => (
               <Fragment key={role}>
@@ -84,18 +88,18 @@ export function Hero() {
             ))}
           </p>
 
-          <p className="mt-5 max-w-[36rem] text-base/relaxed text-ink-muted sm:mt-6 sm:text-body">{hero.lede}</p>
+          <p data-intro="4" className="mt-5 max-w-[36rem] text-base/relaxed text-ink-muted sm:mt-6 sm:text-body">{hero.lede}</p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8">
+          <div data-intro="5" className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8">
             {hero.ctas.map((cta, i) => (
               <a key={cta.label} {...linkProps(cta)} className={buttonClasses(ctaVariants[i] ?? 'ghost')}>
                 {cta.download && <DownloadIcon className="size-4" />}
-                {cta.label}
+                <ArrowLabel label={cta.label} />
               </a>
             ))}
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div data-intro="6" className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
             <a
               {...linkProps(hero.availability.pill)}
               className="inline-flex min-h-tap items-center gap-2 rounded-full border border-line-strong bg-gold-500/10 px-3.5 font-mono text-[0.78rem] font-semibold tracking-[0.02em] text-ink transition-colors duration-150 hover:border-gold-dot motion-reduce:transition-none"
@@ -106,7 +110,7 @@ export function Hero() {
             <span className="text-small text-ink-muted">{hero.availability.note}</span>
           </div>
 
-          <ul className="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-small text-ink-muted sm:flex-row sm:flex-wrap sm:gap-x-6">
+          <ul data-intro="6" className="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-small text-ink-muted sm:flex-row sm:flex-wrap sm:gap-x-6">
             {hero.meta.map((item, i) => {
               const Icon = metaIcons[i] ?? PinIcon
               return (
@@ -120,7 +124,7 @@ export function Hero() {
         </div>
 
         {/* Profile card */}
-        <aside aria-label={hero.card.name} className="@container min-w-0 rounded-lg border border-line bg-surface shadow-lg">
+        <aside data-intro="7 scale" aria-label={hero.card.name} className="@container min-w-0 rounded-lg border border-line bg-surface shadow-lg">
           <div className="flex items-center gap-4 border-b border-line p-5 sm:p-6">
             <Photo className="size-16 max-md:hidden lg:size-24" />
             <div className="min-w-0">
