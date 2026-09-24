@@ -16,7 +16,12 @@ export const identity = {
 export const hero = {
   id: 'top',
   eyebrow: 'Available for accounting & bookkeeping engagements',
-  /** The H1 renders as "Peerzada Faizan" + accented "Ahmad". */
+  /**
+   * H1. Approved change (2026-09-24, Hero review): new headline wording supplied by Faizan.
+   * Recorded in scripts/approved-changes.json so the parity check accepts it.
+   */
+  headline: 'GST, reconciliation and e-commerce accounting that holds up to review',
+  /** Shown directly under the H1 as "Peerzada Faizan" + accented "Ahmad" (was the H1 on the live site). */
   name: { lead: 'Peerzada Faizan', accent: 'Ahmad' },
   roleSeparator: '/',
   roles: ['Accountant', 'Tally Prime', 'GST', 'Reconciliation', 'E-Commerce (Amazon FBA) Accounting'],
@@ -34,8 +39,7 @@ export const hero = {
   card: {
     name: 'Peerzada Faizan Ahmad',
     subtitle: 'Accountant · Srinagar / Sopore, J&K',
-    recordLabel: 'Profile Record',
-    recordId: 'REC‑001',
+    // Approved change (2026-09-24, Hero review): the "Profile Record · REC-001" label row was removed.
     stats: [
       { key: 'Core system', value: 'Tally Prime 7.0' },
       { key: 'GST filings', value: 'GSTR-1 · GSTR-3B' },
