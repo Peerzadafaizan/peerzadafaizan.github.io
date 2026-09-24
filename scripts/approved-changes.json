@@ -1,0 +1,29 @@
+{
+  "description": "Content changes explicitly approved by Peerzada Faizan Ahmad. The content-parity check allows exactly these differences from main @ bd1dab3 and fails on anything else, including an approved change that is not actually applied.",
+  "changes": [
+    {
+      "id": "hero-headline",
+      "date": "2026-09-24",
+      "approval": "Stage 4 Hero review: change the main H1",
+      "type": "add",
+      "text": "GST, reconciliation and e-commerce accounting that holds up to review",
+      "note": "New hero H1. The name (previously the H1) is kept, directly below it."
+    },
+    {
+      "id": "hero-record-label",
+      "date": "2026-09-24",
+      "approval": "Stage 4 Hero review: remove \"Profile Record · REC-001\"",
+      "type": "remove",
+      "text": "Profile Record",
+      "note": "Decorative label row removed from the hero profile card."
+    },
+    {
+      "id": "hero-record-id",
+      "date": "2026-09-24",
+      "approval": "Stage 4 Hero review: remove \"Profile Record · REC-001\"",
+      "type": "remove",
+      "text": "REC‑001",
+      "note": "Decorative record id removed from the hero profile card."
+    }
+  ]
+}

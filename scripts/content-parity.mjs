@@ -15,6 +15,10 @@
  *                      canonical, icon, Permissions-Policy, JSON-LD (deep-equal). CSP and the font
  *                      request differ by design (approved in v2 Stage 1) and are reported, not failed.
  *
+ * Approved content changes (scripts/approved-changes.json) are the ONLY allowed differences: approved
+ * removals may be missing from content, approved additions may be absent from the original. Each approved
+ * change must actually be applied, otherwise the check fails.
+ *
  * Exit code 1 on any failure. A JSON report is written to dist/parity-report.json when dist/ exists.
  */
 import { execFileSync } from 'node:child_process'
@@ -27,15 +31,20 @@ import { content, sectionOrder } from '../src/content/index.ts'
 const root = fileURLToPath(new URL('..', import.meta.url))
 const BASE = process.env.PARITY_BASE ?? 'bd1dab3'
 
+const norm = (s) => s.replace(/\s+/g, ' ').trim()
+
 /* Presentational separators the original markup puts inside text nodes. Each is documented and counted. */
 const PRESENTATIONAL_RULES = [
   { id: 'leading-middot', description: 'Leading "· " before the organisation location (experience)', re: /^· / },
 ]
+/* Content changes the site owner explicitly approved (see scripts/approved-changes.json). */
+const approved = JSON.parse(readFileSync(new URL('./approved-changes.json', import.meta.url), 'utf8')).changes
+const approvedAdds = new Map(approved.filter((c) => c.type === 'add').map((c) => [norm(c.text), c]))
+const approvedRemovals = new Map(approved.filter((c) => c.type === 'remove').map((c) => [norm(c.text), c]))
 /* Content keys that hold element types, not copy. */
 const NON_TEXT_KEYS = new Set(['type'])
 
 // ---------- helpers ----------
-const norm = (s) => s.replace(/\s+/g, ' ').trim()
 const squash = (s) => s.replace(/\s+/g, '')
 const attr = (n, name) => n.attrs?.find((a) => a.name === name)?.value
 const hasAttr = (n, name) => Boolean(n.attrs?.some((a) => a.name === name))
@@ -123,28 +132,42 @@ const contentTextSet = new Set(contentStrings.filter((s) => !NON_TEXT_KEYS.has(s
 // ---------- 1. Visible text ----------
 const ruleHits = Object.fromEntries(PRESENTATIONAL_RULES.map((r) => [r.id, []]))
 const missing = []
+const removedByApproval = []
 for (const t of originalText) {
   if (contentTextSet.has(t)) continue
   const rule = PRESENTATIONAL_RULES.find((r) => r.re.test(t) && contentTextSet.has(t.replace(r.re, '')))
   if (rule) { ruleHits[rule.id].push(t); continue }
+  if (approvedRemovals.has(t)) { removedByApproval.push(t); continue }
   missing.push(t)
 }
 record('Visible text: original → content', missing.length === 0,
   missing.length ? `${missing.length} original text node(s) not found: ${JSON.stringify(missing)}` :
   `${originalText.length} text nodes (${new Set(originalText).size} distinct) all present`,
-  Object.entries(ruleHits).filter(([, v]) => v.length).map(([k, v]) => `rule ${k}: ${v.length} node(s) ${JSON.stringify(v)}`).join('; ') || undefined)
+  [...Object.entries(ruleHits).filter(([, v]) => v.length).map(([k, v]) => `rule ${k}: ${v.length} node(s) ${JSON.stringify(v)}`),
+   ...(removedByApproval.length ? [`approved removals: ${JSON.stringify(removedByApproval)}`] : [])].join('; ') || undefined)
 
 // Text with a documented presentational separator removed is also an original string.
 const ruleStripped = PRESENTATIONAL_RULES.flatMap((r) => ruleHits[r.id].map((t) => t.replace(r.re, '')))
 const allowed = new Set([...originalText, ...ruleStripped, ...originalAttrValues, ...scriptLiterals])
-const invented = contentStrings.filter((s) => !NON_TEXT_KEYS.has(s.key) && s.value && !allowed.has(s.value))
+const invented = contentStrings.filter((s) => !NON_TEXT_KEYS.has(s.key) && s.value && !allowed.has(s.value) && !approvedAdds.has(s.value))
+const addedByApproval = contentStrings.filter((s) => approvedAdds.has(s.value) && !allowed.has(s.value)).map((s) => `${s.path}="${s.value}"`)
 record('Visible text: content → original (nothing invented)', invented.length === 0,
   invented.length ? `${invented.length} content string(s) not in the original: ${JSON.stringify(invented.map((s) => `${s.path}="${s.value}"`))}` :
-  `${contentStrings.length} content strings all traced to the original page`)
+  `${contentStrings.length} content strings all traced to the original page or to an approved change`,
+  addedByApproval.length ? `approved additions: ${JSON.stringify(addedByApproval)}` : undefined)
+
+// Every approved change must be applied — no stale approvals.
+const notApplied = [
+  ...[...approvedAdds.values()].filter((c) => !contentTextSet.has(norm(c.text))).map((c) => `${c.id}: addition not in content`),
+  ...[...approvedRemovals.values()].filter((c) => contentTextSet.has(norm(c.text))).map((c) => `${c.id}: removed text still in content`),
+  ...[...approvedRemovals.values()].filter((c) => !originalText.includes(norm(c.text))).map((c) => `${c.id}: removal does not exist on the original page`),
+]
+record('Approved content changes', notApplied.length === 0,
+  notApplied.length ? notApplied.join('; ') : `${approved.length} approved change(s), all applied: ${approved.map((c) => `${c.id} (${c.type}, ${c.date})`).join(', ')}`)
 
 const oCount = counter(originalText.map((t) => PRESENTATIONAL_RULES.reduce((x, r) => (ruleHits[r.id].includes(x) ? x.replace(r.re, '') : x), t)))
 const cCount = counter(contentStrings.map((s) => s.value))
-const multiplicity = [...oCount].filter(([t, n]) => (cCount.get(t) ?? 0) < n).map(([t, n]) => `"${t}" ×${n} on page, ×${cCount.get(t) ?? 0} in content`)
+const multiplicity = [...oCount].filter(([t, n]) => !approvedRemovals.has(t) && (cCount.get(t) ?? 0) < n).map(([t, n]) => `"${t}" ×${n} on page, ×${cCount.get(t) ?? 0} in content`)
 record('Visible text: repeated strings', true, `${multiplicity.length} string(s) appear more often on the page than in content (reused via shared content, informational)`,
   multiplicity.length ? multiplicity.join('; ') : undefined)
 
