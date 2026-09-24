@@ -7,9 +7,9 @@ import { CaseStudies } from './sections/CaseStudies.tsx'
 import { Expertise } from './sections/Expertise.tsx'
 import { Hero } from './sections/Hero.tsx'
 import { HowIWork } from './sections/HowIWork.tsx'
+import { IndiaUae } from './sections/IndiaUae.tsx'
 import {
   about,
-  availability,
   contact,
   experience,
   resume,
@@ -18,7 +18,7 @@ import {
 
 /**
  * Site shell (skip link, header, navigation, theme toggle, footer) plus the page sections.
- * Stage 4 builds the sections one at a time (Hero, Case Studies, How I Work, Expertise + Tools done); the rest are still placeholders carrying
+ * Stage 4 builds the sections one at a time (Hero, Case Studies, How I Work, Expertise + Tools, India + UAE done); the rest are still placeholders carrying
  * only their existing id, eyebrow and title from src/content. Page order follows `sectionOrder` in src/content/index.ts (approved reorder); Tools is a part of
  * Expertise and About a part of Experience (approved merges, `sectionMerges`).
  */
@@ -42,7 +42,7 @@ export default function App() {
         <CaseStudies />
         <HowIWork />
         <Expertise />
-        <SectionAnchor heading={availability.heading} alt />
+        <IndiaUae />
         <SectionAnchor heading={experience.heading} parts={[about.heading]} />
         <SectionAnchor heading={resume.heading} alt />
         <SectionAnchor heading={contact.heading} />
