@@ -33,7 +33,8 @@ function Photo({ className }: { className: string }) {
 }
 
 /**
- * Hero (#top). Every word comes from src/content/profile.ts (hero), unchanged.
+ * Hero (#top). Every word comes from src/content/profile.ts (hero). The H1 headline and the removal of
+ * the card's "Profile Record · REC-001" row are approved changes (scripts/approved-changes.json).
  * Layout: mobile-first single column (photo first); from 900px a two-column split with the
  * profile card on the right. The faint ruled lines are the hero-only "ledger" motif.
  */
@@ -56,9 +57,16 @@ export function Hero() {
             </p>
           </div>
 
-          <h1 id={TITLE_ID} className="mt-4 font-display text-display font-semibold tracking-[-0.015em] text-ink">
-            {hero.name.lead} <span className="text-accent">{hero.name.accent}</span>
+          <h1
+            id={TITLE_ID}
+            className="mt-4 max-w-[20ch] font-display text-[1.875rem] leading-[1.12] font-semibold tracking-[-0.015em] text-ink sm:text-[2.5rem] lg:text-[3.25rem] lg:leading-[1.06]"
+          >
+            {hero.headline}
           </h1>
+
+          <p className="mt-4 font-display text-[1.375rem] leading-tight font-semibold text-ink sm:text-2xl">
+            {hero.name.lead} <span className="text-accent">{hero.name.accent}</span>
+          </p>
 
           <p className="mt-4 max-w-measure text-[0.9375rem] leading-relaxed text-ink-body sm:text-lg">
             {/* Each separator stays on the line of the role before it, so no line starts with "/". */}
@@ -120,12 +128,8 @@ export function Hero() {
               <p className="mt-0.5 text-small text-ink-muted">{hero.card.subtitle}</p>
             </div>
           </div>
-          <div className="px-5 pt-4 pb-5 sm:px-6 sm:pb-6">
-            <p className="flex items-center justify-between font-mono text-[0.66rem] uppercase tracking-[0.08em] text-ink-subtle">
-              <span>{hero.card.recordLabel}</span>
-              <span>{hero.card.recordId}</span>
-            </p>
-            <dl className="mt-2">
+          <div className="px-5 pt-2 pb-5 sm:px-6 sm:pb-6">
+            <dl>
               {hero.card.stats.map((stat) => (
                 <div
                   key={stat.key}
