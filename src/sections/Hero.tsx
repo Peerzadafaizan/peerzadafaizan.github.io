@@ -5,6 +5,7 @@ import { focusHashTarget } from '../hooks/focusTarget.ts'
 import { BriefcaseIcon, ClockIcon, DownloadIcon, PinIcon } from '../components/icons/Icons.tsx'
 import { ArrowLabel } from '../components/ui/ArrowLabel.tsx'
 import { buttonClasses } from '../components/ui/button.ts'
+import { LedgerStage } from '../components/visual/LedgerStage.tsx'
 
 const TITLE_ID = 'hero-title'
 const metaIcons = [PinIcon, BriefcaseIcon, ClockIcon]
@@ -40,6 +41,9 @@ function Photo({ className }: { className: string }) {
  * profile card on the right. The faint ruled lines are the hero-only "ledger" motif.
  * Motion: a short entrance on load (data-intro order: eyebrow → headline → name → roles/lede →
  * CTAs → availability/meta → profile card). Wording and layout are unaffected.
+ * 3D stage: a decorative stack of ledger sheets (LedgerStage) sits behind the profile card; it can
+ * be turned through 360° by dragging, tilts slightly with the pointer, and deepens on scroll
+ * (src/animations/stage3d.ts). It is aria-hidden and never covers the text or controls.
  */
 export function Hero() {
   return (
@@ -50,8 +54,8 @@ export function Hero() {
       className="hero-ledger relative overflow-hidden outline-none md:flex md:min-h-[calc(100svh-var(--header-h))] md:items-center"
     >
       <div className="container-page relative grid gap-10 py-8 sm:py-14 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)] md:items-center md:gap-12 md:py-16 lg:gap-16">
-        {/* Main column */}
-        <div className="min-w-0">
+        {/* Main column (above the decorative 3D stage wherever they overlap) */}
+        <div className="relative z-10 min-w-0">
           <div data-intro="1" className="flex items-center gap-4">
             <Photo className="size-14 md:hidden" />
             <p className="flex items-start gap-2.5 font-mono text-label font-semibold uppercase tracking-[0.1em] text-accent">
@@ -123,29 +127,32 @@ export function Hero() {
           </ul>
         </div>
 
-        {/* Profile card */}
-        <aside data-intro="7 scale" aria-label={hero.card.name} className="@container min-w-0 rounded-lg border border-line bg-surface shadow-lg">
-          <div className="flex items-center gap-4 border-b border-line p-5 sm:p-6">
-            <Photo className="size-16 max-md:hidden lg:size-24" />
-            <div className="min-w-0">
-              <p className="font-semibold text-ink">{hero.card.name}</p>
-              <p className="mt-0.5 text-small text-ink-muted">{hero.card.subtitle}</p>
+        {/* Profile card, in front of the decorative 3D ledger stage (the card and portrait never move with it) */}
+        <div data-stage-anchor className="relative min-w-0 pt-[208px] sm:pt-[236px] md:pt-[232px] lg:pt-[262px]">
+          <LedgerStage />
+          <aside data-intro="7 scale" aria-label={hero.card.name} className="@container relative z-10 min-w-0 rounded-lg border border-line bg-surface shadow-lg">
+            <div className="flex items-center gap-4 border-b border-line p-5 sm:p-6">
+              <Photo className="size-16 max-md:hidden lg:size-24" />
+              <div className="min-w-0">
+                <p className="font-semibold text-ink">{hero.card.name}</p>
+                <p className="mt-0.5 text-small text-ink-muted">{hero.card.subtitle}</p>
+              </div>
             </div>
-          </div>
-          <div className="px-5 pt-2 pb-5 sm:px-6 sm:pb-6">
-            <dl>
-              {hero.card.stats.map((stat) => (
-                <div
-                  key={stat.key}
-                  className="flex flex-col gap-0.5 border-b border-line py-3 last:border-b-0 last:pb-0 @sm:flex-row @sm:items-baseline @sm:justify-between @sm:gap-4"
-                >
-                  <dt className="shrink-0 text-small text-ink-muted">{stat.key}</dt>
-                  <dd className="font-mono text-[0.84rem] font-semibold text-ink @sm:text-right">{stat.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </aside>
+            <div className="px-5 pt-2 pb-5 sm:px-6 sm:pb-6">
+              <dl>
+                {hero.card.stats.map((stat) => (
+                  <div
+                    key={stat.key}
+                    className="flex flex-col gap-0.5 border-b border-line py-3 last:border-b-0 last:pb-0 @sm:flex-row @sm:items-baseline @sm:justify-between @sm:gap-4"
+                  >
+                    <dt className="shrink-0 text-small text-ink-muted">{stat.key}</dt>
+                    <dd className="font-mono text-[0.84rem] font-semibold text-ink @sm:text-right">{stat.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
   )
