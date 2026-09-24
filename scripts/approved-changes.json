@@ -77,6 +77,38 @@
       "section": "about",
       "into": "experience",
       "note": "All About content and its #about anchor are kept, as a part of the Experience section."
+    },
+    {
+      "id": "about-record-label-01",
+      "date": "2026-09-24",
+      "approval": "CV + Contact stage: remove the REC-01 to REC-04 presentation labels from the About figures",
+      "type": "remove",
+      "text": "REC‑01",
+      "note": "Label only; the figure and its caption are kept."
+    },
+    {
+      "id": "about-record-label-02",
+      "date": "2026-09-24",
+      "approval": "CV + Contact stage: remove the REC-01 to REC-04 presentation labels from the About figures",
+      "type": "remove",
+      "text": "REC‑02",
+      "note": "Label only; the figure and its caption are kept."
+    },
+    {
+      "id": "about-record-label-03",
+      "date": "2026-09-24",
+      "approval": "CV + Contact stage: remove the REC-01 to REC-04 presentation labels from the About figures",
+      "type": "remove",
+      "text": "REC‑03",
+      "note": "Label only; the figure and its caption are kept."
+    },
+    {
+      "id": "about-record-label-04",
+      "date": "2026-09-24",
+      "approval": "CV + Contact stage: remove the REC-01 to REC-04 presentation labels from the About figures",
+      "type": "remove",
+      "text": "REC‑04",
+      "note": "Label only; the figure and its caption are kept."
     }
   ]
 }
