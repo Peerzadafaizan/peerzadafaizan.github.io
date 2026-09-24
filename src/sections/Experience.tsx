@@ -103,8 +103,7 @@ export function Experience() {
 
           <ul className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-md border border-line bg-line min-[400px]:grid-cols-2 lg:grid-cols-4">
             {about.statTiles.map((tile) => (
-              <li key={tile.index} className="relative bg-surface p-5">
-                <span className="absolute top-3 right-4 font-mono text-[0.64rem] tracking-[0.04em] text-ink-subtle">{tile.index}</span>
+              <li key={tile.value} className="bg-surface p-5">
                 <p className="font-display text-[1.375rem] leading-tight font-semibold text-accent">{tile.value}</p>
                 <p className="mt-1.5 text-[0.84rem] leading-snug text-ink-muted">{tile.caption}</p>
               </li>
