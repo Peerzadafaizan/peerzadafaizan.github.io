@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'sha256-Huy287BlelYUmtKAHWXUfuQgetN3YmBs/OK/vqLEHek='; font-src 'self'; script-src 'sha256-iiAmBOHHMMYPhlnH1HlcRqKk9iYBuwqqhCVCp2sDrPY='; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>LinkedIn Sync — Peerzada Faizan Ahmad</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<style>
+:root {
+  --bg: #f7f7f5; --surface: #ffffff; --border: #e3e2dc; --ink-900: #12181f; --ink-500: #5c6875; --teal-600: #0d7d7a;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0a141f; --surface: #0f1e30; --border: #223449; --ink-900: #f2f4f6; --ink-500: #9aa7b3; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink-900); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; }
+.card { max-width: 520px; width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+h1 { font-size: 1.15rem; margin: 0 0 12px; }
+p { color: var(--ink-500); font-size: 0.92rem; line-height: 1.6; margin: 0 0 18px; }
+.code-box { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; word-break: break-all; user-select: all; margin-bottom: 16px; }
+.error { color: #b3261e; }
+button { font: inherit; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--teal-600); color: #fff; cursor: pointer; }
+button:disabled { opacity: 0.5; cursor: default; }
+.hint { font-size: 0.78rem; color: var(--ink-500); margin-top: 10px; }
+</style>
+</head>
+<body>
+<main class="card">
+  <h1>LinkedIn sync — authorization result</h1>
+  <div id="output"><p>Reading response…</p></div>
+  <p class="hint">This page only reads the parameters LinkedIn placed in this page's own URL. Nothing is sent anywhere — copy the code below and paste it back into your sync session. This link is single-use and expires within minutes.</p>
+</main>
+<script>
+(function () {
+  "use strict";
+  var out = document.getElementById("output");
+  var params = new URLSearchParams(window.location.search);
+  var code = params.get("code");
+  var error = params.get("error");
+  var errorDesc = params.get("error_description");
+  var state = params.get("state");
+
+  function el(tag, text, cls) {
+    var e = document.createElement(tag);
+    if (text) e.textContent = text;
+    if (cls) e.className = cls;
+    return e;
+  }
+
+  out.textContent = "";
+  if (error) {
+    out.appendChild(el("p", "LinkedIn returned an error: " + error, "error"));
+    if (errorDesc) out.appendChild(el("p", errorDesc));
+  } else if (code) {
+    out.appendChild(el("p", "Copy this authorization code:"));
+    out.appendChild(el("div", code, "code-box"));
+    if (state) out.appendChild(el("p", "state: " + state));
+  } else {
+    out.appendChild(el("p", "No authorization code found in the URL. If you navigated here directly, start the sync flow again."));
+  }
+})();
+</script>
+</body>
+</html>

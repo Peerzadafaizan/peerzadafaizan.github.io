@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://peerzadafaizan.github.io/sitemap.xml
