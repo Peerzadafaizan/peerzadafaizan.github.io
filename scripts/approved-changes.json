@@ -24,6 +24,41 @@
       "type": "remove",
       "text": "REC‑001",
       "note": "Decorative record id removed from the hero profile card."
+    },
+    {
+      "id": "section-order",
+      "date": "2026-09-24",
+      "approval": "Stage 4: move Case Studies immediately after the Hero; final order Hero → Case Studies → How I Work → Expertise → India + UAE → Experience → CV + Contact",
+      "type": "reorder-sections",
+      "order": [
+        "top",
+        "projects",
+        "workflow",
+        "expertise",
+        "tools",
+        "focus",
+        "experience",
+        "about",
+        "resume",
+        "contact"
+      ],
+      "note": "Tools (after Expertise) and About (after Experience) stay on the page with all their content until their planned merge is decided."
+    },
+    {
+      "id": "nav-order",
+      "date": "2026-09-24",
+      "approval": "Stage 4: navigation follows the new section order",
+      "type": "reorder-nav",
+      "order": [
+        "#projects",
+        "#expertise",
+        "#tools",
+        "#experience",
+        "#about",
+        "#resume",
+        "#contact"
+      ],
+      "note": "Same 7 links and labels as the live site; only their order changes."
     }
   ]
 }

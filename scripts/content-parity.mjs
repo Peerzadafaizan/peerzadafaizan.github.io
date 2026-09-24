@@ -215,8 +215,26 @@ record('Accessible names (alt, aria-label)', missingNames.length === 0,
 
 // ---------- 5. Structure ----------
 const originalSections = findAll(body, (n) => n.nodeName === 'section').map((n) => attr(n, 'id'))
-const sameOrder = JSON.stringify(originalSections) === JSON.stringify([...sectionOrder])
-record('Section ids and order', sameOrder, sameOrder ? originalSections.join(' → ') : `original ${JSON.stringify(originalSections)} vs content ${JSON.stringify(sectionOrder)}`)
+const sameSet = (x, y) => JSON.stringify([...x].sort()) === JSON.stringify([...y].sort())
+{
+  const approvedOrder = approved.find((c) => c.type === 'reorder-sections')?.order
+  const expected = approvedOrder ?? originalSections
+  const ok = sameSet(originalSections, sectionOrder) && JSON.stringify(expected) === JSON.stringify([...sectionOrder])
+  record('Section ids and order', ok,
+    ok ? `${sectionOrder.join(' → ')}${approvedOrder ? ` (approved reorder; original: ${originalSections.join(' → ')})` : ''}`
+       : `content ${JSON.stringify(sectionOrder)} vs expected ${JSON.stringify(expected)} (original ${JSON.stringify(originalSections)})`)
+}
+{
+  const nav = find(body, (n) => n.nodeName === 'nav')
+  const originalNav = findAll(nav, (n) => n.nodeName === 'a').map((a) => attr(a, 'href'))
+  const contentNav = content.site.nav.links.map((l) => l.href)
+  const approvedNav = approved.find((c) => c.type === 'reorder-nav')?.order
+  const expected = approvedNav ?? originalNav
+  const ok = sameSet(originalNav, contentNav) && JSON.stringify(expected) === JSON.stringify(contentNav)
+  record('Navigation links and order', ok,
+    ok ? `${contentNav.join(' · ')}${approvedNav ? ` (approved reorder; original: ${originalNav.join(' · ')})` : ''}`
+       : `content ${JSON.stringify(contentNav)} vs expected ${JSON.stringify(expected)}`)
+}
 
 const form = find(body, (n) => attr(n, 'id') === 'contactForm')
 const formProblems = []
