@@ -5,13 +5,13 @@ import { Header } from './components/layout/Header.tsx'
 import { SkipLink } from './components/layout/SkipLink.tsx'
 import { CaseStudies } from './sections/CaseStudies.tsx'
 import { Hero } from './sections/Hero.tsx'
+import { HowIWork } from './sections/HowIWork.tsx'
 import {
   about,
   availability,
   contact,
   experience,
   expertise,
-  howIWork,
   resume,
   site,
   tools,
@@ -19,8 +19,8 @@ import {
 
 /**
  * Site shell (skip link, header, navigation, theme toggle, footer) plus the page sections.
- * Stage 4 builds the sections one at a time (Hero and Case Studies done); the rest are still placeholders carrying
- * only their existing id, eyebrow and title from src/content. Page order matches the live site.
+ * Stage 4 builds the sections one at a time (Hero, Case Studies, How I Work done); the rest are still placeholders carrying
+ * only their existing id, eyebrow and title from src/content. Page order follows `sectionOrder` in src/content/index.ts (approved reorder).
  */
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -39,13 +39,13 @@ export default function App() {
       <Header menuOpen={menuOpen} onMenuOpenChange={setMenuOpen} />
       <main id={site.mainId} tabIndex={-1} inert={menuOpen} className="outline-none">
         <Hero />
-        <SectionAnchor heading={about.heading} />
-        <SectionAnchor heading={expertise.heading} alt />
         <CaseStudies />
-        <SectionAnchor heading={howIWork.heading} alt />
-        <SectionAnchor heading={experience.heading} />
+        <HowIWork />
+        <SectionAnchor heading={expertise.heading} />
         <SectionAnchor heading={tools.heading} alt />
         <SectionAnchor heading={availability.heading} />
+        <SectionAnchor heading={experience.heading} alt />
+        <SectionAnchor heading={about.heading} />
         <SectionAnchor heading={resume.heading} alt />
         <SectionAnchor heading={contact.heading} />
       </main>
