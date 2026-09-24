@@ -36,8 +36,9 @@ export const content = {
  * Section anchor ids in page order.
  * Approved change (2026-09-24, Stage 4): Case Studies moved directly after the Hero; final order
  * Hero → Case Studies → How I Work → Expertise → India + UAE → Experience → CV + Contact.
- * Tools and About keep all their content on the page, placed next to the sections they are planned
- * to merge into (Tools after Expertise, About after Experience) until that merge is decided.
+ * Approved change (2026-09-24, structural cleanup): Tools is merged into Expertise and About into
+ * Experience (see sectionMerges). Their ids stay in this reading order so every existing #tools /
+ * #about link still resolves, now to a part inside the parent section.
  * Recorded in scripts/approved-changes.json.
  */
 export const sectionOrder = [
@@ -52,3 +53,15 @@ export const sectionOrder = [
   resume.heading.id,
   contact.heading.id,
 ] as const
+
+/**
+ * Sections rendered as a part of another section (child id → parent id). The child keeps its id,
+ * heading and all of its content; it is no longer a separate top-level section.
+ */
+export const sectionMerges = {
+  [tools.heading.id]: expertise.heading.id,
+  [about.heading.id]: experience.heading.id,
+} as const satisfies Record<string, string>
+
+/** Top-level page sections in order (sectionOrder without the merged parts). */
+export const topLevelSections = sectionOrder.filter((id) => !(id in sectionMerges))
