@@ -36,3 +36,31 @@ export const CloseIcon = (p: SVGProps<SVGSVGElement>) => (
     <path d="M6 6l12 12M18 6L6 18" />
   </svg>
 )
+
+/* Hero icons — same paths as the live site's hero meta list and CV button. */
+export const PinIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z" />
+    <circle cx="12" cy="10" r="3" />
+  </svg>
+)
+
+export const BriefcaseIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <rect x="2" y="7" width="20" height="14" rx="2" />
+    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  </svg>
+)
+
+export const ClockIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 6v6l4 2" />
+  </svg>
+)
+
+export const DownloadIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" />
+  </svg>
+)
