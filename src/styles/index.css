@@ -5,9 +5,9 @@
    components never need a `dark:` variant.
    ========================================================================== */
 
-@import "tailwindcss";
-
-/* Content files hold copy, not class names — keep their words from generating stray utilities. */
+/* Scan only src/ for class names (not scripts/, docs or lockfiles), and skip src/content: it holds
+   copy, not class names, so its words must not generate stray utilities. */
+@import "tailwindcss" source("../");
 @source not "../content";
 
 /* `dark:` variant — an explicit toggle choice (data-theme) wins; otherwise follow the OS. */
@@ -104,6 +104,23 @@
   --spacing-section: var(--section-y);
   --spacing-tap: 44px;
   --spacing-header: var(--header-h);
+}
+
+/* Page container: content width + responsive gutters (16 / 24 / 32px). */
+@utility container-page {
+  width: 100%;
+  max-width: calc(var(--container-content) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Mobile menu entrance — used only under motion-safe:, so reduced-motion users get none. */
+@theme {
+  --animate-sheet-in: sheet-in 200ms var(--ease-out);
+  @keyframes sheet-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: none; }
+  }
 }
 
 /* Runtime variables ------------------------------------------------------- */
