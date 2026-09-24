@@ -1,15 +1,20 @@
-/** Button styles from the approved design system: ≥44px target, 10px radius, colour-only hover. */
+import { buttonLift } from '../../animations/interactions.ts'
+
+/**
+ * Button styles from the approved design system: ≥44px target, 10px radius, colour hover plus a
+ * 1px lift (GSAP stage micro-interaction, see src/animations/interactions.ts).
+ */
 type Variant = 'primary' | 'outline' | 'ghost'
 type Size = 'md' | 'sm'
 
 const baseClasses =
   'inline-flex min-h-tap items-center justify-center gap-2 rounded-md border text-center font-semibold leading-tight ' +
-  'transition-colors duration-150 motion-reduce:transition-none'
+  `${buttonLift} motion-reduce:transition-none`
 
 const variants: Record<Variant, string> = {
   primary: 'border-transparent bg-accent-fill text-on-accent shadow-sm hover:bg-accent-fill-hover hover:shadow-md',
   outline: 'border-line-strong bg-transparent text-ink hover:border-accent hover:text-accent',
-  ghost: 'border-transparent bg-transparent text-ink-body hover:text-accent hover:underline underline-offset-4',
+  ghost: 'border-transparent bg-transparent text-ink-body hover:text-accent underline decoration-transparent underline-offset-4 hover:decoration-current',
 }
 
 const sizes: Record<Size, string> = {
