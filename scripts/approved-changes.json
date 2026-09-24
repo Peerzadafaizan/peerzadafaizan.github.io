@@ -42,7 +42,7 @@
         "resume",
         "contact"
       ],
-      "note": "Tools (after Expertise) and About (after Experience) stay on the page with all their content until their planned merge is decided."
+      "note": "Reading order of all section anchors. Tools and About are later merged into Expertise and Experience (see merge-sections entries) and keep their positions as parts of those sections."
     },
     {
       "id": "nav-order",
@@ -59,6 +59,24 @@
         "#contact"
       ],
       "note": "Same 7 links and labels as the live site; only their order changes."
+    },
+    {
+      "id": "merge-tools-into-expertise",
+      "date": "2026-09-24",
+      "approval": "Structural cleanup: merge Tools into Expertise (one cohesive Expertise + Tools section; no separate Tools section)",
+      "type": "merge-sections",
+      "section": "tools",
+      "into": "expertise",
+      "note": "All Tools content and its #tools anchor are kept, as a part of the Expertise section."
+    },
+    {
+      "id": "merge-about-into-experience",
+      "date": "2026-09-24",
+      "approval": "Structural cleanup: merge About into Experience (one cohesive Experience + About area; no separate About section)",
+      "type": "merge-sections",
+      "section": "about",
+      "into": "experience",
+      "note": "All About content and its #about anchor are kept, as a part of the Experience section."
     }
   ]
 }

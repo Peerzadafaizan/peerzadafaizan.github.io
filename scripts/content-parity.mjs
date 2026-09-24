@@ -26,7 +26,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse } from 'parse5'
-import { content, sectionOrder } from '../src/content/index.ts'
+import { content, sectionMerges, sectionOrder } from '../src/content/index.ts'
 
 const root = fileURLToPath(new URL('..', import.meta.url))
 const BASE = process.env.PARITY_BASE ?? 'bd1dab3'
@@ -223,6 +223,25 @@ const sameSet = (x, y) => JSON.stringify([...x].sort()) === JSON.stringify([...y
   record('Section ids and order', ok,
     ok ? `${sectionOrder.join(' → ')}${approvedOrder ? ` (approved reorder; original: ${originalSections.join(' → ')})` : ''}`
        : `content ${JSON.stringify(sectionOrder)} vs expected ${JSON.stringify(expected)} (original ${JSON.stringify(originalSections)})`)
+}
+{
+  // Approved merges: each merged part must still exist (same id), sit directly after its parent (or
+  // after the parent's earlier parts) in the reading order, and match the approval exactly.
+  const approvedMerges = Object.fromEntries(approved.filter((c) => c.type === 'merge-sections').map((c) => [c.section, c.into]))
+  const problems = []
+  if (JSON.stringify(Object.entries(approvedMerges).sort()) !== JSON.stringify(Object.entries(sectionMerges).sort()))
+    problems.push(`content merges ${JSON.stringify(sectionMerges)} vs approved ${JSON.stringify(approvedMerges)}`)
+  for (const [child, parent] of Object.entries(sectionMerges)) {
+    const ci = sectionOrder.indexOf(child)
+    const pi = sectionOrder.indexOf(parent)
+    if (ci < 0 || pi < 0) { problems.push(`${child} or ${parent} missing`); continue }
+    const between = sectionOrder.slice(pi + 1, ci)
+    if (ci < pi || between.some((id) => sectionMerges[id] !== parent)) problems.push(`${child} is not directly inside ${parent}`)
+  }
+  record('Section merges', problems.length === 0,
+    problems.length ? problems.join('; ') : Object.keys(sectionMerges).length
+      ? `approved: ${Object.entries(sectionMerges).map(([c, p]) => `#${c} is a part of #${p}`).join(', ')} (ids and content kept)`
+      : 'none')
 }
 {
   const nav = find(body, (n) => n.nodeName === 'nav')
