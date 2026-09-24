@@ -56,11 +56,13 @@ export const about = {
     eyebrow: 'About',
     title: 'A reconciliation-first accountant',
   } satisfies SectionHeading,
+  // Approved change (2026-09-24, CV + Contact stage): the REC-01 to REC-04 record labels were removed;
+  // the four figures and their captions are unchanged.
   statTiles: [
-    { index: 'REC‑01', value: '3+ Yrs', caption: 'Accounting & GST compliance experience' },
-    { index: 'REC‑02', value: 'Multi-State', caption: 'GSTIN & Amazon FBA Accounting' },
-    { index: 'REC‑03', value: 'Bidirectional', caption: 'GSTIN + invoice-level reconciliation logic' },
-    { index: 'REC‑04', value: '7.0', caption: 'Tally Prime — import & inventory cost accounting' },
+    { value: '3+ Yrs', caption: 'Accounting & GST compliance experience' },
+    { value: 'Multi-State', caption: 'GSTIN & Amazon FBA Accounting' },
+    { value: 'Bidirectional', caption: 'GSTIN + invoice-level reconciliation logic' },
+    { value: '7.0', caption: 'Tally Prime — import & inventory cost accounting' },
   ],
   paragraphs: [
     "I'm an accountant based in Sopore, Jammu & Kashmir, currently working with Weltherm Home Appliances Pvt. Ltd. in Srinagar, where I handle GST compliance, multi-state GSTIN management, Tally Prime bookkeeping, and accounting for the company's e-commerce (Amazon FBA) operations.",
