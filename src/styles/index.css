@@ -253,3 +253,120 @@
     }
   }
 }
+
+/* ==========================================================================
+   Hero 3D ledger stage (decorative). Pure CSS 3D: nested transforms, no WebGL.
+   Structure: .ledger-stage (perspective) › .ledger-tilt (pitch) › .ledger-spin (yaw)
+   › .ledger-depth (stack depth) › sheets + reconciliation lines.
+   The resting pose lives here, so without motion (reduced motion) it is a still 3D object;
+   src/animations/stage3d.ts only moves the tilt/spin/depth wrappers with GSAP.
+   ========================================================================== */
+@layer components {
+  .ledger-stage {
+    --size: 190px;               /* sheet footprint */
+    --gap: 30px;                 /* distance between sheets */
+    --enter: 1;                  /* entrance: stack opens from 0 → 1 */
+    --scroll: 1;                 /* scroll: stack spreads slightly as the hero scrolls away */
+    position: absolute;
+    z-index: 0;
+    /* A compact object standing above the card; the card overlaps only its front tip. */
+    width: var(--size);
+    aspect-ratio: 1;
+    left: 50%;
+    top: 64px;
+    margin-left: calc(var(--size) / -2);   /* centred without a transform: GSAP never touches this box */
+    perspective: 900px;
+    perspective-origin: 50% 0%;
+    touch-action: pan-y;         /* vertical page scroll stays native on touch screens */
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: grab;
+  }
+  .ledger-stage[data-dragging] { cursor: grabbing; }
+  @media (min-width: 600px) {
+    .ledger-stage { --size: 220px; --gap: 34px; }
+  }
+  @media (min-width: 900px) {
+    .ledger-stage { --size: 220px; --gap: 36px; }
+  }
+  @media (min-width: 1200px) {
+    .ledger-stage { --size: 250px; --gap: 42px; }
+  }
+
+  .ledger-tilt,
+  .ledger-spin,
+  .ledger-depth {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+  }
+  .ledger-tilt { transform: rotateX(60deg); }
+  .ledger-spin { transform: rotate(-38deg); }
+  .ledger-depth { transform: scale3d(1, 1, calc(var(--enter) * var(--scroll))); }
+
+  .ledger-sheet {
+    position: absolute;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--line-strong) 60%, transparent);
+    background-color: color-mix(in srgb, var(--surface) 58%, transparent);
+    /* Ledger rules: a hairline every 14px */
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0 13px,
+      color-mix(in srgb, var(--line) 95%, transparent) 13px 14px
+    );
+    transform: translateZ(calc(var(--i) * var(--gap)));
+    opacity: calc(0.6 + var(--i) * 0.1);   /* lower sheets recede */
+  }
+  .ledger-sheet--base {
+    background-color: color-mix(in srgb, var(--surface) 45%, transparent);
+    /* Ruled grid: rows and columns */
+    background-image:
+      repeating-linear-gradient(to bottom, transparent 0 17px, color-mix(in srgb, var(--line) 100%, transparent) 17px 18px),
+      repeating-linear-gradient(to right, transparent 0 53px, color-mix(in srgb, var(--line) 100%, transparent) 53px 54px);
+  }
+  .ledger-sheet--top {
+    border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+    background-color: color-mix(in srgb, var(--surface) 80%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+  /* Thin gold margin rule — the stage's only gold. */
+  .ledger-margin {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 14%;
+    width: 1px;
+    background: color-mix(in srgb, var(--gold-dot) 70%, transparent);
+  }
+  /* Matched rows on the top sheet */
+  .ledger-row {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    height: 7%;
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+    border-left: 2px solid var(--accent);
+  }
+  /* The same rows' anchor points on the base sheet */
+  .ledger-mark {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    margin: -4.5px 0 0 -4.5px;
+    border-radius: 9999px;
+    border: 1.5px solid var(--accent);
+    background: var(--surface);
+  }
+  /* Reconciliation line: stands straight up from the base sheet to the top sheet */
+  .ledger-link {
+    position: absolute;
+    width: 1.5px;
+    height: calc(4 * var(--gap));
+    margin-left: -0.75px;
+    background: var(--accent);
+    transform-origin: 50% 0;
+    transform: rotateX(90deg);
+  }
+}
