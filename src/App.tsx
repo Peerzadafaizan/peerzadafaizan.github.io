@@ -4,21 +4,20 @@ import { Footer } from './components/layout/Footer.tsx'
 import { Header } from './components/layout/Header.tsx'
 import { SkipLink } from './components/layout/SkipLink.tsx'
 import { CaseStudies } from './sections/CaseStudies.tsx'
+import { Experience } from './sections/Experience.tsx'
 import { Expertise } from './sections/Expertise.tsx'
 import { Hero } from './sections/Hero.tsx'
 import { HowIWork } from './sections/HowIWork.tsx'
 import { IndiaUae } from './sections/IndiaUae.tsx'
 import {
-  about,
   contact,
-  experience,
   resume,
   site,
 } from './content/index.ts'
 
 /**
  * Site shell (skip link, header, navigation, theme toggle, footer) plus the page sections.
- * Stage 4 builds the sections one at a time (Hero, Case Studies, How I Work, Expertise + Tools, India + UAE done); the rest are still placeholders carrying
+ * Stage 4 builds the sections one at a time (Hero, Case Studies, How I Work, Expertise + Tools, India + UAE, Experience + About done); the rest are still placeholders carrying
  * only their existing id, eyebrow and title from src/content. Page order follows `sectionOrder` in src/content/index.ts (approved reorder); Tools is a part of
  * Expertise and About a part of Experience (approved merges, `sectionMerges`).
  */
@@ -43,7 +42,7 @@ export default function App() {
         <HowIWork />
         <Expertise />
         <IndiaUae />
-        <SectionAnchor heading={experience.heading} parts={[about.heading]} />
+        <Experience />
         <SectionAnchor heading={resume.heading} alt />
         <SectionAnchor heading={contact.heading} />
       </main>
