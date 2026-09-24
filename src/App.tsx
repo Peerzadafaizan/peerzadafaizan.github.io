@@ -20,7 +20,8 @@ import {
 /**
  * Site shell (skip link, header, navigation, theme toggle, footer) plus the page sections.
  * Stage 4 builds the sections one at a time (Hero, Case Studies, How I Work done); the rest are still placeholders carrying
- * only their existing id, eyebrow and title from src/content. Page order follows `sectionOrder` in src/content/index.ts (approved reorder).
+ * only their existing id, eyebrow and title from src/content. Page order follows `sectionOrder` in src/content/index.ts (approved reorder); Tools is a part of
+ * Expertise and About a part of Experience (approved merges, `sectionMerges`).
  */
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -41,11 +42,9 @@ export default function App() {
         <Hero />
         <CaseStudies />
         <HowIWork />
-        <SectionAnchor heading={expertise.heading} />
-        <SectionAnchor heading={tools.heading} alt />
-        <SectionAnchor heading={availability.heading} />
-        <SectionAnchor heading={experience.heading} alt />
-        <SectionAnchor heading={about.heading} />
+        <SectionAnchor heading={expertise.heading} parts={[tools.heading]} />
+        <SectionAnchor heading={availability.heading} alt />
+        <SectionAnchor heading={experience.heading} parts={[about.heading]} />
         <SectionAnchor heading={resume.heading} alt />
         <SectionAnchor heading={contact.heading} />
       </main>
