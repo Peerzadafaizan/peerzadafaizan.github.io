@@ -7,6 +7,7 @@
  *   hidden or moved at all, and switching that setting on while the page is open reverts every
  *   animation and ScrollTrigger immediately (content shown as-is).
  * - Intensity (desktop vs. phone) is chosen once on load, so resizing never replays anything.
+ * - The hero's 3D ledger stage (stage3d.ts) runs in the same context.
  * - Safety nets: content that receives keyboard focus before it has scrolled into view is shown
  *   instantly, and everything is shown before printing.
  * - Cleanup reverts all tweens, ScrollTriggers and listeners (unmount / React StrictMode).
@@ -15,6 +16,7 @@ import { useLayoutEffect, type RefObject } from 'react'
 import { gsap, MEDIA, motionScale, ScrollTrigger } from './gsap.ts'
 import { isPending, release, settle, settleAll } from './reveal.ts'
 import { playIntro, setupScrollReveals } from './scroll.ts'
+import { setupLedgerStage } from './stage3d.ts'
 
 export function useMotion(rootRef: RefObject<HTMLElement | null>) {
   useLayoutEffect(() => {
@@ -31,10 +33,14 @@ export function useMotion(rootRef: RefObject<HTMLElement | null>) {
       }
       playIntro(root, scale)
       setupScrollReveals(root, scale, add)
+      const stopStage = setupLedgerStage(root, scale, add)
       // Reverted (reduced motion switched on, or unmount): GSAP restores what it changed; release()
       // then removes any leftover inline transform (GSAP folds Tailwind's `translate` into its own
       // transform while an element is hidden) so everything is exactly as the markup defines it.
-      return () => queueMicrotask(() => release(root))
+      return () => {
+        stopStage?.()
+        queueMicrotask(() => release(root))
+      }
     })
 
     // Keyboard focus lands on something not yet revealed → show it (and its hidden parents) now.
