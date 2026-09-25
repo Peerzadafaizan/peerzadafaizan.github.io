@@ -31,7 +31,26 @@ export default function App() {
   // own hash landing — a smooth scroll here would be cut short by ScrollTrigger's load-time refresh.
   useEffect(() => {
     const id = decodeURIComponent(window.location.hash.slice(1))
-    if (id) document.getElementById(id)?.scrollIntoView({ block: 'start', behavior: 'instant' })
+    const target = id ? document.getElementById(id) : null
+    if (!target) return
+    const jump = () => target.scrollIntoView({ block: 'start', behavior: 'instant' })
+    jump()
+    // The web fonts (display=swap) can arrive just after this jump and re-wrap the text above the
+    // target. Re-align once they are ready — unless the visitor has already scrolled or navigated.
+    let userMoved = false
+    let active = true
+    const onUserInput = () => {
+      userMoved = true
+    }
+    const inputs = ['wheel', 'touchstart', 'pointerdown', 'keydown'] as const
+    for (const type of inputs) window.addEventListener(type, onUserInput, { passive: true, once: true })
+    void document.fonts?.ready.then(() => {
+      if (active && !userMoved && decodeURIComponent(window.location.hash.slice(1)) === id) jump()
+    })
+    return () => {
+      active = false
+      for (const type of inputs) window.removeEventListener(type, onUserInput)
+    }
   }, [])
 
   return (
