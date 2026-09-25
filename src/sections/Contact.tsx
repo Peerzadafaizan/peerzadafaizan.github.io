@@ -77,7 +77,7 @@ export function Contact() {
                     <Icon className="mt-0.5 size-[18px] shrink-0 text-icon" />
                     <span className="min-w-0">
                       <span className="block text-[0.72rem] font-semibold tracking-[0.06em] text-ink-muted uppercase">{row.key}</span>
-                      <span className={`block break-words text-ink ${row.href ? groupLinkUnderline : ''}`}>{row.value}</span>
+                      <span className={`block text-ink [overflow-wrap:anywhere] ${row.href ? groupLinkUnderline : ''}`}>{row.value}</span>
                     </span>
                   </>
                 )
